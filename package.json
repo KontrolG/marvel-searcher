@@ -6,8 +6,15 @@
     "start": "webpack-dev-server --config webpack/development.config.js --open",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\"",
-    "lint:styles": "stylelint \"src/**/*.{scss,css}\"",
-    "format": "prettier \"src/**/*.{js,jsx}\""
+    "lint:css": "stylelint \"src/**/*.{scss,css}\"",
+    "format": "prettier \"src/**/*.{js,jsx}\"",
+    "format:fix": "prettier --check --write \"src/**/*.{js,jsx}\"",
+    "pre:commit": "npm run lint:fix && npm run format:fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre:commit"
+    }
   },
   "keywords": [],
   "author": "",
