@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Marvel's Characters searcher powered by Marvel Public API.",
   "scripts": {
-    "start": "webpack-dev-server --config webpack/development.config.js --open"
+    "start": "webpack-dev-server --config webpack/development.config.js --open",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\"",
+    "lint:styles": "stylelint \"src/**/*.{scss,css}\"",
+    "format": "prettier \"src/**/*.{js,jsx}\""
   },
   "keywords": [],
   "author": "",
