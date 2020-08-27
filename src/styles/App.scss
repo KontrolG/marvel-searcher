@@ -1,0 +1,33 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font: 400 16px/1.5 "SF UI Text Regular", Helvetica, sans-serif;
+  background: #f7f8fa;
+  color: #343434;
+}
+
+input,
+button {
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  background: none;
+}
+
+.test,
+.test > * {
+  border: 1px solid black;
+}
