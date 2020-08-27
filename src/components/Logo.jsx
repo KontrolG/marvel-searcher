@@ -1,13 +1,17 @@
-import React from "react";
+import React, { forwardRef } from "react";
+import styled from "styled-components";
+import logoSVG from "../assets/img/MarvelLogo.svg";
 
-const Logo = (props) => {
-  return (
-    <img
-      class="top-bar__logo"
-      src="../assets/img/MarvelLogo.svg"
-      alt="Marvel Logo"
-    />
-  );
+const StyledImage = styled.img`
+  width: ${({ width }) => width};
+`;
+
+const Logo = forwardRef((props, ref) => {
+  return <StyledImage src={logoSVG} alt="Marvel Logo" ref={ref} {...props} />;
+});
+
+Logo.defaultProps = {
+  width: "5rem"
 };
 
 export default Logo;

@@ -31,3 +31,20 @@ button {
 .test > * {
   border: 1px solid black;
 }
+
+.top-bar {
+  padding: 0.75rem 5rem 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  color: #dedede;
+  justify-content: center;
+  box-shadow: 0 0 2px 0px #aaa;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+.top-bar__logo {
+  margin-right: 1.5rem;
+}

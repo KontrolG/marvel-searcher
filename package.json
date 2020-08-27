@@ -9,11 +9,11 @@
     "lint:css": "stylelint \"src/**/*.{scss,css}\"",
     "format": "prettier \"src/**/*.{js,jsx}\"",
     "format:fix": "prettier --check --write \"src/**/*.{js,jsx}\"",
-    "pre:commit": "npm run format:fix"
+    "pre:commit": "npm run lint:fix && npm run format:fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run pre:commit"
+      "pre-commit": "echo 'pre-commit script goes here'"
     }
   },
   "keywords": [],
