@@ -1,6 +1,13 @@
-import React from "react";
+import React, { StrictMode } from "react";
 import "../styles/App.scss";
+import TopBar from "./TopBar";
 
-const App = () => <h1>Hello world!</h1>;
+const App = () => {
+  return (
+    <StrictMode>
+      <TopBar />
+    </StrictMode>
+  );
+};
 
 export default App;
