@@ -21,7 +21,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: [".js", ".jsx"]
   },
   module: {
     rules: [
@@ -36,12 +36,17 @@ module.exports = {
         use: ["babel-loader"]
       },
       {
-        test: /\.(svg|png|jpeg|jpg|gif)$/i,
+        test: /\.(woff(2)?|ttf|eot|svg|png|jpe?g|gif)$/i,
         exclude: /node_modules/,
-        use: ["file-loader"]
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[folder]/[name].[ext]"
+            }
+          }
+        ]
       }
-      
-      
     ]
   }
 };

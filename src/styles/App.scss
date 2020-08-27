@@ -1,5 +1,25 @@
 @import "./resetStyles.scss";
 
+@font-face {
+  font-family: "icons";
+  src: url("../assets/fonts/icons.eot?7savix");
+  src: url("../assets/fonts/icons.eot?7savix#iefix") format("embedded-opentype"),
+    url("../assets/fonts/icons.ttf?7savix") format("truetype"),
+    url("../assets/fonts/icons.woff?7savix") format("woff"),
+    url("../assets/fonts/icons.svg?7savix#icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "SF UI Text Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("SF UI Text Regular"),
+    url("../assets/fonts/SFUIText-Regular.woff") format("woff");
+}
+
 body {
   font: 400 16px/1.5 "SF UI Text Regular", Helvetica, sans-serif;
   background: #f7f8fa;
