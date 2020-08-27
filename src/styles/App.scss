@@ -1,14 +1,4 @@
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  padding: 0;
-  margin: 0;
-}
+@import "./resetStyles.scss";
 
 body {
   font: 400 16px/1.5 "SF UI Text Regular", Helvetica, sans-serif;
@@ -16,35 +6,9 @@ body {
   color: #343434;
 }
 
-input,
-button {
-  border: none;
-  color: inherit;
-  font: inherit;
-}
-
-button {
-  background: none;
-}
-
 .test,
 .test > * {
   border: 1px solid black;
 }
 
-.top-bar {
-  padding: 0.75rem 5rem 0.75rem 1rem;
-  display: flex;
-  align-items: center;
-  background: #ffffff;
-  color: #dedede;
-  justify-content: center;
-  box-shadow: 0 0 2px 0px #aaa;
-  position: fixed;
-  width: 100%;
-  z-index: 9999;
-}
-
-.top-bar__logo {
-  margin-right: 1.5rem;
-}
+@import "./TopBar.scss";
