@@ -6,6 +6,7 @@
     "airbnb"
   ],
   "rules": {
+    "react/jsx-filename-extension": "warn",
     "quotes": "off",
     "no-console": "warn",
     "consistent-return": "off",
@@ -38,7 +39,7 @@
     "no-unused-vars": [
       "error",
       {
-        "argsIgnorePattern": "req|res|next|val"
+        "argsIgnorePattern": "request|response|next|value|props"
       }
     ]
   }

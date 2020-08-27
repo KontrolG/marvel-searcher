@@ -20,6 +20,9 @@ module.exports = {
       template: "./public/index.html"
     })
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
@@ -31,7 +34,14 @@ module.exports = {
         test: /\.(js|jsx)$/i,
         exclude: /node_modules/,
         use: ["babel-loader"]
+      },
+      {
+        test: /\.(svg|png|jpeg|jpg|gif)$/i,
+        exclude: /node_modules/,
+        use: ["file-loader"]
       }
+      
+      
     ]
   }
 };
