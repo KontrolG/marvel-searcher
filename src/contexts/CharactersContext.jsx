@@ -14,7 +14,7 @@ const CharactersProvider = ({ children }) => {
   const [characterNameQuery, setCharacterNameQuery] = useState(
     defaultState.characterNameQuery
   );
-  useEffect(() => console.log(characterNameQuery), [characterNameQuery])
+  useEffect(() => console.log(characterNameQuery), [characterNameQuery]);
   const [results, setResults] = useState(defaultState.results);
 
   const contextValue = {
