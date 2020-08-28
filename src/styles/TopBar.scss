@@ -32,6 +32,10 @@ $grey: #adadad;
 }
 
 .top-bar__search__input {
+  // outline: none;
+  border: none;
+  color: inherit;
+  font: inherit;
   flex: 1;
   color: $grey;
 }
@@ -41,8 +45,7 @@ $grey: #adadad;
 }
 
 .top-bar__toggle-favorites {
-  color: $grey;
-  font-size: 1.5rem;
+  color: $grey !important;
 }
 
 .top-bar__toggle-favorites::after {
@@ -53,5 +56,5 @@ $grey: #adadad;
   display: block;
   position: absolute;
   top: 1rem;
-  right: 4rem;
+  right: 4.25rem;
 }
