@@ -1,0 +1,44 @@
+.main-container {
+  padding: 5rem 0;
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.characters {
+  margin: 56px auto 0;
+  width: min-content;
+  display: grid;
+  grid-template-columns: repeat(4, 260px);
+  grid-auto-rows: 390px;
+  grid-auto-flow: row;
+  gap: 1.25rem 1.5rem;
+  max-width: 1200px;
+}
+
+@supports not (display: grid) {
+  .characters {
+    width: auto;
+    --gap-row: 0.625rem;
+    --gap-column: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(-2 * var(--gap-row)) calc(-2 * var(--gap-column));
+    justify-content: center;
+  }
+
+  .character-card {
+    margin: var(--gap-row) var(--gap-column);
+  }
+}
+
+.character-card {
+  color: white;
+}
+
+.character-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

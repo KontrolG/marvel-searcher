@@ -11,9 +11,9 @@ const StyledToggleFavoriteButton = styled(Button)`
 const ToggleFavoriteButton = forwardRef((props, ref) => {
   return (
     <StyledToggleFavoriteButton
-      className="top-bar__toggle-favorites"
       icon={{ name: "star-outline" }}
       ref={ref}
+      {...props}
     ></StyledToggleFavoriteButton>
   );
 });
