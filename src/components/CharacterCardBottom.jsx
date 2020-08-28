@@ -15,7 +15,7 @@ const StyledCharacterCardBottom = styled.div`
 const CharacterCardBottom = (props) => {
   return (
     <StyledCharacterCardBottom>
-      <p>Thor</p>
+      <p>3D Man</p>
     </StyledCharacterCardBottom>
   );
 };
