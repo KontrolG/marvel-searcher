@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Icon from "./Icon";
+import Button from "./Button";
 
 const StyledInput = styled.input`
   border: none;
@@ -10,7 +11,10 @@ const StyledInput = styled.input`
 const SearchForm = () => {
   return (
     <form className="top-bar__search" action="#">
-      <Icon name="search" className="top-bar__search__icon" />
+      <Button
+        className="top-bar__search__button"
+        icon={{ name: "search", size: "1.25rem" }}
+      />
       <StyledInput
         type="search"
         className="top-bar__search__input"

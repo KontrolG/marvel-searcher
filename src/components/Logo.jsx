@@ -11,7 +11,7 @@ const Logo = forwardRef((props, ref) => {
 });
 
 Logo.defaultProps = {
-  width: "5rem"
+  width: "4.8rem"
 };
 
 export default Logo;

@@ -5,6 +5,13 @@ const CharacterSection = (props) => {
   return (
     <section className="characters">
       <CharacterCard></CharacterCard>
+      <CharacterCard></CharacterCard>
+      <CharacterCard></CharacterCard>
+      <CharacterCard></CharacterCard>
+      <CharacterCard></CharacterCard>
+      <CharacterCard></CharacterCard>
+      <CharacterCard></CharacterCard>
+      <CharacterCard></CharacterCard>
     </section>
   );
 };

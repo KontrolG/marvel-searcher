@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "./Button";
 
 const StyledToggleFavoriteButton = styled(Button)`
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   height: 2rem;
   padding: 0 0.25rem;
 `;

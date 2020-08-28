@@ -9,6 +9,7 @@ const StyledCharacterCardBottom = styled.div`
   background-image: linear-gradient(transparent, 50%, rgba(0, 0, 0, 0.6));
   display: flex;
   align-items: flex-end;
+  text-transform: uppercase;
 `;
 
 const CharacterCardBottom = (props) => {
