@@ -6,7 +6,11 @@ const iconUnicodeCharacters = {
   search: "e903",
   "star-outline": "e900",
   star: "e901",
-  close: "e904"
+  close: "e904",
+  clock: "e94e",
+  spinner: "e97c",
+  wrench: "e991",
+  "arrow-left": "ea40"
 };
 
 const Icon = styled.i`

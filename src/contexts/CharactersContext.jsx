@@ -1,4 +1,10 @@
-import React, { createContext, useState, useEffect, memo } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  memo
+} from "react";
 
 const defaultState = {
   characterNameQuery: "",
@@ -32,6 +38,8 @@ const CharactersProvider = ({ children }) => {
 };
 
 export default CharactersContext;
+
+export const useCharactersContext = () => useContext(CharactersContext);
 
 const memoizedProvider = memo(CharactersProvider);
 
