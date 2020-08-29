@@ -10,4 +10,4 @@ app.get("/*", (request, response) => {
 
 const port = process.env.PORT || 7777;
 
-app.listen(port, () => console.log(`App listenint at port ${port}`));
+app.listen(port, () => console.log(`App listening at port ${port}`));
