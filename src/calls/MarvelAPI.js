@@ -1,16 +1,51 @@
 import Axios from "axios";
+import md5 from "md5";
 
-const config = {};
+const privateKey = process.env.MARVEL_API_PRIVATE_KEY;
+const publicKey = process.env.MARVEL_API_PUBLIC_KEY;
 
-const getCharacterByName = (name) =>
-  Axios.get(`api/v1/public/characterByName?name=${name}` /* , config */);
+const getAuthenticationParameters = () => {
+  const timestamp = Date.now();
+  const hash = md5(timestamp + privateKey + publicKey);
+  return { ts: timestamp, apikey: publicKey, hash };
+};
 
-const getCharacters = () =>
-  Axios.get("api/v1/public/characters" /* , config */);
+const baseEndpoint = "https://gateway.marvel.com/v1/public";
+const charactersEndpoint = `${baseEndpoint}/characters`;
+
+const getCharacters = () => {
+  const authenticationParams = getAuthenticationParameters();
+
+  return Axios.get(charactersEndpoint, {
+    params: authenticationParams
+  });
+};
+
+const getCharacterByName = (name) => {
+  const authenticationParams = getAuthenticationParameters();
+
+  return Axios.get(charactersEndpoint, {
+    params: {
+      name,
+      ...authenticationParams
+    }
+  });
+};
+
+const getCharacterById = (characterId) => {
+  const authenticationParams = getAuthenticationParameters();
+
+  return Axios.get(`${charactersEndpoint}/${characterId}`, {
+    params: {
+      ...authenticationParams
+    }
+  });
+};
 
 const MarvelAPI = {
   getCharacters,
-  getCharacterByName
+  getCharacterByName,
+  getCharacterById
 };
 
 export default MarvelAPI;

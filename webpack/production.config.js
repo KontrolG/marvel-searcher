@@ -1,6 +1,6 @@
 const path = require("path");
 const commonConfig = require("./common.config");
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 
 module.exports = merge(commonConfig, {
   mode: "production",
@@ -9,7 +9,7 @@ module.exports = merge(commonConfig, {
     app: "./src/index.js"
   },
   output: {
-    path: path.resolve(__dirname, "public", "js"),
-    filename: "[name].[hash].js"
+    path: path.resolve(__dirname, "../public"),
+    filename: "js/[name].[hash].js"
   }
 });
