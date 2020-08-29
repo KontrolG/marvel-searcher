@@ -13,7 +13,7 @@ const StyledCharacterCardTop = styled.div`
 const CharacterCardTop = (props) => {
   return (
     <StyledCharacterCardTop>
-      <ToggleFavoriteButton />
+      <ToggleFavoriteButton title="Añadir a personajes favoritos" />
     </StyledCharacterCardTop>
   );
 };

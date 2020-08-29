@@ -1,19 +1,13 @@
 import React from "react";
 import CharacterCard from "./CharacterCard";
 
-const CharacterSection = (props) => {
-  return (
-    <section className="characters">
-      <CharacterCard></CharacterCard>
-      <CharacterCard></CharacterCard>
-      <CharacterCard></CharacterCard>
-      <CharacterCard></CharacterCard>
-      <CharacterCard></CharacterCard>
-      <CharacterCard></CharacterCard>
-      <CharacterCard></CharacterCard>
-      <CharacterCard></CharacterCard>
-    </section>
-  );
+const toCharacterCard = (character) => (
+  <CharacterCard character={character} key={character.id} />
+);
+
+const CharacterSection = ({ characters }) => {
+  const charactersCards = characters.map(toCharacterCard);
+  return <section className="characters">{charactersCards}</section>;
 };
 
 export default CharacterSection;

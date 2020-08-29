@@ -9,13 +9,18 @@ const StyledCharacterCardBottom = styled.div`
   background-image: linear-gradient(transparent, 50%, rgba(0, 0, 0, 0.6));
   display: flex;
   align-items: flex-end;
-  text-transform: uppercase;
+
+  p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 `;
 
-const CharacterCardBottom = (props) => {
+const CharacterCardBottom = ({ name }) => {
   return (
     <StyledCharacterCardBottom>
-      <p>3D Man</p>
+      <p>{name}</p>
     </StyledCharacterCardBottom>
   );
 };
