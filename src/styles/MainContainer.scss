@@ -1,9 +1,10 @@
 .main-container {
   padding: 5rem 0;
-  width: 95%;
+  width: 90%;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -35,6 +36,8 @@
 }
 
 .character-card {
+  width: 100%;
+  height: 100%;
   color: white;
 }
 
@@ -42,4 +45,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.character-details__return-button-wrapper {
+  flex-basis: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.character-details__thumbnail {
+  flex-basis: 50%;
+}
+
+.character-details__info {
+  flex-basis: 50%;
+  padding: 0 30px 0 36px;
+}
+
+.character-details__description {
+  margin-bottom: 2rem;
+}
+
+.character-details__comics {
+  list-style-position: inside;
 }

@@ -2,15 +2,15 @@ import React, { StrictMode } from "react";
 import "../styles/App.scss";
 import TopBar from "./TopBar";
 import MainContainer from "./MainContainer";
-import { CharactersProvider } from "../contexts/CharactersContext";
+import { CharactersSearchProvider } from "../contexts/CharactersSearchContext";
 
 const App = () => {
   return (
     <StrictMode>
-      <CharactersProvider>
+      <CharactersSearchProvider>
         <TopBar />
         <MainContainer />
-      </CharactersProvider>
+      </CharactersSearchProvider>
     </StrictMode>
   );
 };

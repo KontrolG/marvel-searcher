@@ -1,7 +1,7 @@
 import React, { useContext, useState, useCallback } from "react";
 import styled from "styled-components";
 import Button from "./Button";
-import { useCharactersContext } from "../contexts/CharactersContext";
+import { useCharactersSearchContext } from "../contexts/CharactersSearchContext";
 
 const StyledInput = styled.input`
   border: none;
@@ -9,7 +9,10 @@ const StyledInput = styled.input`
 `;
 
 const SearchForm = () => {
-  const { characterNameQuery, setCharacterNameQuery } = useCharactersContext();
+  const {
+    characterNameQuery,
+    setCharacterNameQuery
+  } = useCharactersSearchContext();
   const [inputValue, setInputValue] = useState(characterNameQuery);
 
   const changeInputValue = ({ target }) => {

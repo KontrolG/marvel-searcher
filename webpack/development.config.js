@@ -8,7 +8,7 @@ module.exports = merge(commonConfig, {
     app: "./src/index.js"
   },
   output: {
-    path: path.resolve(__dirname, "public", "js"),
-    filename: "[name].js"
+    path: path.resolve(__dirname, "public"),
+    filename: "js/[name].js"
   }
 });

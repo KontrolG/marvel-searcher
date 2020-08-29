@@ -1,42 +1,17 @@
-import React, { useState, useContext, useEffect } from "react";
-import CharacterSection from "./CharacterSection";
-import { useCharactersContext } from "../contexts/CharactersContext";
-import useLoading from "../hooks/useLoading";
-import LoadingSpinner from "./LoadingSpinner";
-import MarvelAPI from "../calls/MarvelAPI";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CharactersResults from "./CharactersResults";
+import CharacterDetails from "./CharacterDetails";
 
-const MainContainer = (props) => {
-  const { characterNameQuery, results, setResults } = useCharactersContext();
-  const [isLoading, startLoading, finishLoading] = useLoading(false);
-
-  const changeResults = (response) => {
-    const { status, data } = response.data;
-    if (status === "Ok") {
-      console.log(data.results);
-      setResults(data.results);
-    }
-  };
-
-  useEffect(() => {
-    startLoading();
-    MarvelAPI.getCharacters().then(changeResults).finally(finishLoading);
-  }, []);
-
-  useEffect(() => {
-    if (characterNameQuery === "") return;
-    startLoading();
-    MarvelAPI.getCharacterByName(characterNameQuery)
-      .then(changeResults)
-      .finally(finishLoading);
-  }, [characterNameQuery]);
-
+const MainContainer = () => {
   return (
     <main className="main-container">
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : (
-        <CharacterSection characters={results} />
-      )}
+      <Router>
+        <Switch>
+          <Route exac path="/characters/:id" component={CharacterDetails} />
+          <Route exac path="/" component={CharactersResults} />
+        </Switch>
+      </Router>
     </main>
   );
 };

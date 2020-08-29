@@ -26,6 +26,25 @@ body {
   color: #444;
 }
 
+a[href] {
+  color: unset;
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+
+ul {
+  list-style-position: inside;
+}
+
 .test,
 .test > * {
   border: 1px solid black;
