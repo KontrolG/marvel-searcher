@@ -7,7 +7,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "start": "npm run build && npm run server",
+    "start": "npm run server",
     "server": "node server.js",
     "build": "node node_modules/webpack/bin/webpack.js --config webpack/production.config.js",
     "dev": "webpack-dev-server --config webpack/development.config.js --open",
