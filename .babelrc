@@ -1,7 +1,17 @@
 {
+  "presets": ["@babel/preset-react"],
   "env": {
-    "development": {
-      "presets": ["@babel/preset-react"]
+    "staging": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "browsers": ["last 5 versions", "ie >= 8"]
+            }
+          }
+        ]
+      ]
     },
     "production": {
       "presets": [
@@ -12,8 +22,7 @@
               "browsers": ["last 5 versions", "ie >= 8"]
             }
           }
-        ],
-        "@babel/preset-react"
+        ]
       ]
     }
   }

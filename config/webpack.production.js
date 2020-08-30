@@ -6,7 +6,7 @@ const { NODE_ENV } = process.env;
 
 module.exports = merge(commonConfig, {
   mode: "production",
-  devtool: NODE_ENV === "staging" ? "cheap-source-map" : false,
+  devtool: NODE_ENV === "staging" ? "source-map" : false,
   entry: {
     polyfill: "@babel/polyfill",
     app: "./src/index.js"
