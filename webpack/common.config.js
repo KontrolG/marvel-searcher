@@ -1,6 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
+const getClientEnviromentVariables = require("./getClientEnviromentVariables");
+
+const clientEnviromentVariables = getClientEnviromentVariables();
 
 module.exports = {
   mode: "development",
@@ -18,7 +21,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./src/assets/index.html"
-    })
+    }),
+    new webpack.DefinePlugin(clientEnviromentVariables.stringified)
   ],
   resolve: {
     extensions: [".js", ".jsx"]

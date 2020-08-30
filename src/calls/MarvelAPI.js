@@ -1,8 +1,8 @@
 import Axios from "axios";
 import md5 from "md5";
 
-const privateKey = process.env.MARVEL_API_PRIVATE_KEY;
-const publicKey = process.env.MARVEL_API_PUBLIC_KEY;
+const privateKey = process.env.REACT_APP_MARVEL_API_PRIVATE_KEY;
+const publicKey = process.env.REACT_APP_MARVEL_API_PUBLIC_KEY;
 
 const getAuthenticationParameters = () => {
   const timestamp = Date.now();
