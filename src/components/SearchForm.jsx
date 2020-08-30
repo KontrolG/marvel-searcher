@@ -1,7 +1,9 @@
 import React, { useContext, useState, useCallback } from "react";
 import styled from "styled-components";
+import useInput from "../hooks/useInput";
 import Button from "./Button";
 import { useCharactersSearchContext } from "../contexts/CharactersSearchContext";
+import useRedirectTo from "../hooks/useRedirectTo";
 
 const StyledInput = styled.input`
   border: none;
@@ -11,21 +13,24 @@ const StyledInput = styled.input`
 const SearchForm = () => {
   const {
     characterNameQuery,
-    setCharacterNameQuery
+    setCharacterNameQuery,
   } = useCharactersSearchContext();
-  const [inputValue, setInputValue] = useState(characterNameQuery);
+  const [inputValue, changeInputValue] = useInput(characterNameQuery);
 
-  const changeInputValue = ({ target }) => {
-    const inputValue = target.value;
-    setInputValue(inputValue);
+  const redirectTo = useRedirectTo();
+
+  const redirectToCharactersResults = () => {
+    const charactersResultsRoute = "/";
+    redirectTo(charactersResultsRoute);
   };
 
   const changeCharacterNameQuery = useCallback(
     (event) => {
       event.preventDefault();
       setCharacterNameQuery(inputValue);
+      redirectToCharactersResults();
     },
-    [inputValue]
+    [inputValue],
   );
 
   return (

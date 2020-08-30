@@ -6,12 +6,10 @@ const StyledImage = styled.img`
   width: ${({ width }) => width};
 `;
 
-const Logo = forwardRef((props, ref) => {
-  return <StyledImage src={logoSVG} alt="Marvel Logo" ref={ref} {...props} />;
-});
+const Logo = forwardRef((props, ref) => <StyledImage src={logoSVG} alt="Marvel Logo" ref={ref} {...props} />);
 
 Logo.defaultProps = {
-  width: "4.8rem"
+  width: "4.8rem",
 };
 
 export default Logo;

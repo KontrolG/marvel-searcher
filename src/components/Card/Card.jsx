@@ -19,7 +19,7 @@ const Card = forwardRef(({ component, children, ...props }, ref) => {
 });
 
 Card.defaultProps = {
-  component: "div"
+  component: "div",
 };
 
 export default Card;

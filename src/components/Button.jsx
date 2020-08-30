@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Icon from "./Icon";
 
@@ -19,13 +20,21 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-const Button = forwardRef(({ icon, children, ...props }, ref) => {
+const Button = forwardRef((props, ref) => {
+  const { className, onClick, icon, children } = props;
   return (
-    <StyledButton ref={ref} {...props}>
-      {icon && <Icon {...icon} />}
+    <StyledButton ref={ref} className={className} onClick={onClick}>
+      {icon && <Icon name={icon.name} size={icon.size} />}
       {children}
     </StyledButton>
   );
 });
 
+Button.propTypes = {
+  icon: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    size: PropTypes.string
+  }),
+  children: PropTypes.element
+};
 export default Button;

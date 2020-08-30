@@ -5,8 +5,6 @@ const StyledCardImage = styled.img`
   width: 100%;
 `;
 
-const CardImage = forwardRef((props, ref) => {
-  return <StyledCardImage ref={ref} {...props} />;
-});
+const CardImage = forwardRef((props, ref) => <StyledCardImage ref={ref} {...props} />);
 
 export default CardImage;

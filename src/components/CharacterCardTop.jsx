@@ -10,12 +10,10 @@ const StyledCharacterCardTop = styled.div`
   color: white !important;
 `;
 
-const CharacterCardTop = (props) => {
-  return (
-    <StyledCharacterCardTop>
-      <ToggleFavoriteButton title="Añadir a personajes favoritos" />
-    </StyledCharacterCardTop>
-  );
-};
+const CharacterCardTop = (props) => (
+  <StyledCharacterCardTop>
+    <ToggleFavoriteButton title="Añadir a personajes favoritos" />
+  </StyledCharacterCardTop>
+);
 
 export default CharacterCardTop;

@@ -17,12 +17,10 @@ const StyledCharacterCardBottom = styled.div`
   }
 `;
 
-const CharacterCardBottom = ({ name }) => {
-  return (
-    <StyledCharacterCardBottom>
-      <p>{name}</p>
-    </StyledCharacterCardBottom>
-  );
-};
+const CharacterCardBottom = ({ name }) => (
+  <StyledCharacterCardBottom>
+    <p>{name}</p>
+  </StyledCharacterCardBottom>
+);
 
 export default CharacterCardBottom;

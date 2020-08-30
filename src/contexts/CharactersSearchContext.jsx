@@ -1,17 +1,19 @@
-import React, { createContext, useState, useContext, memo } from "react";
+import React, {
+  createContext, useState, useContext, memo,
+} from "react";
 
 const defaultState = {
   characterNameQuery: "",
   setcharacterNameQuery: () => {},
   results: [],
-  setResults: () => {}
+  setResults: () => {},
 };
 
 const CharactersSearchContext = createContext(defaultState);
 
 const CharactersSearchProvider = ({ children }) => {
   const [characterNameQuery, setCharacterNameQuery] = useState(
-    defaultState.characterNameQuery
+    defaultState.characterNameQuery,
   );
   const [results, setResults] = useState(defaultState.results);
 
@@ -19,7 +21,7 @@ const CharactersSearchProvider = ({ children }) => {
     characterNameQuery,
     setCharacterNameQuery,
     results,
-    setResults
+    setResults,
   };
 
   return (
@@ -31,8 +33,7 @@ const CharactersSearchProvider = ({ children }) => {
 
 export default CharactersSearchContext;
 
-export const useCharactersSearchContext = () =>
-  useContext(CharactersSearchContext);
+export const useCharactersSearchContext = () => useContext(CharactersSearchContext);
 
 const memoizedProvider = memo(CharactersSearchProvider);
 

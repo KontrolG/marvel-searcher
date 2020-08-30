@@ -19,12 +19,10 @@ const StyledLoadingSpinner = styled.div`
   }
 `;
 
-const LoadingSpinner = forwardRef((props, ref) => {
-  return (
-    <StyledLoadingSpinner {...props} ref={ref}>
-      <Icon name="spinner" />
-    </StyledLoadingSpinner>
-  );
-});
+const LoadingSpinner = forwardRef((props, ref) => (
+  <StyledLoadingSpinner {...props} ref={ref}>
+    <Icon name="spinner" />
+  </StyledLoadingSpinner>
+));
 
 export default LoadingSpinner;

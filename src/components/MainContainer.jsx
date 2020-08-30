@@ -1,19 +1,15 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import CharactersResults from "./CharactersResults";
 import CharacterDetails from "./CharacterDetails";
 
-const MainContainer = () => {
-  return (
-    <main className="main-container">
-      <Router>
-        <Switch>
-          <Route exac path="/characters/:id" component={CharacterDetails} />
-          <Route exac path="/" component={CharactersResults} />
-        </Switch>
-      </Router>
-    </main>
-  );
-};
+const MainContainer = () => (
+  <main className="main-container">
+    <Switch>
+      <Route exac path="/characters/:id" component={CharacterDetails} />
+      <Route exac path="/" component={CharactersResults} />
+    </Switch>
+  </main>
+);
 
 export default MainContainer;
