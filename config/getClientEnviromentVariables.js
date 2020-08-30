@@ -12,7 +12,7 @@ const getClientEnvironmentVariables = () => {
 };
 
 const loadEnviromentVariables = () => {
-  if (NODE_ENV === "development") {
+  if (NODE_ENV !== "production") {
     requireRootEnviromentFile();
   }
 };
