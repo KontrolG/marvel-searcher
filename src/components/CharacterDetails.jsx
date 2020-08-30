@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 import Icon from "./Icon";
 import Card from "./Card/Card";
 import CardImage from "./Card/CardImage";
 import CardContent from "./Card/CardContent";
 import CharacterCardTop from "./CharacterCardTop";
-import thorImage from "../assets/img/thor-comic.jpg";
 import useGetMarvelCharacterById from "../hooks/useGetMarvelCharacterById";
 
-const toListItem = ({ resourceURI, name }) => <li>{name}</li>;
+const toListItem = ({ resourceURI, name }) => <li key={resourceURI}>{name}</li>;
 
 const CharacterDetails = ({ match, ...props }) => {
   const characterId = match.params.id;
@@ -19,7 +19,7 @@ const CharacterDetails = ({ match, ...props }) => {
 
   const thumbnailsSrc = `${thumbnail.path}.${thumbnail.extension}`;
   return isLoading ? (
-    "Loading"
+    <LoadingSpinner />
   ) : (
     <Fragment>
       <section className="character-details__return-button-wrapper">

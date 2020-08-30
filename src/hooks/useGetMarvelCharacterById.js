@@ -20,8 +20,8 @@ const useGetMarvelCharacterById = (characterId) => {
   const changeCharacter = (response) => {
     const { status, data } = response.data;
     if (status === "Ok") {
-      console.log(data.results[0]);
-      setCharacter(data.results[0]);
+      const [character] = data.results;
+      setCharacter(character);
     }
   };
 

@@ -15,6 +15,8 @@
     "lint:css": "stylelint \"src/**/*.{scss,css}\"",
     "format": "prettier \"src/**/*.{js,jsx}\"",
     "format:fix": "prettier --check --write \"src/**/*.{js,jsx}\"",
+    "deploy:staging": "git push staging",
+    "deploy:prod": "git push heroku master",
     "pre:commit": "npm run lint:fix && npm run format:fix"
   },
   "husky": {
