@@ -6,7 +6,7 @@ $grey: #adadad;
   align-items: center;
   justify-content: center;
   position: fixed;
-  padding: 0.85rem 1.25rem;
+  padding: 0.85rem 2.5rem 0.85rem 1.25rem;
   height: 50px;
   background: #ffffff;
   color: $light-grey;
@@ -53,13 +53,26 @@ $grey: #adadad;
   position: relative;
 }
 
-.top-bar__toggle-favorites::after {
-  content: "";
-  height: 1.5rem;
-  background: #dedede;
-  width: 1px;
-  display: block;
-  position: absolute;
-  top: 0.25rem;
-  left: 3rem;
+@media only screen and (max-width: 599px) {
+  .top-bar__search__input {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .top-bar {
+    height: 70px;
+    padding: 0.85rem 5.75rem 0.85rem 1.25rem;
+  }
+
+  .top-bar__toggle-favorites::after {
+    content: "";
+    height: 1.5rem;
+    background: #dedede;
+    width: 1px;
+    display: block;
+    position: absolute;
+    top: 0.25rem;
+    left: 3rem;
+  }
 }
