@@ -7,6 +7,8 @@ const StyledCard = styled.div`
   box-shadow: 0 0 2px 0px #aaa;
   position: relative;
   overflow: hidden;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
 `;
 
 const Card = forwardRef(({ component, children, ...props }, ref) => {
@@ -20,6 +22,8 @@ const Card = forwardRef(({ component, children, ...props }, ref) => {
 
 Card.defaultProps = {
   component: "div",
+  width: "100%",
+  height: "100%"
 };
 
 export default Card;

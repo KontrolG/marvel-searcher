@@ -8,12 +8,12 @@ const useGetMarvelCharacterById = (characterId) => {
     name: null,
     description: null,
     comics: {
-      items: [],
+      items: []
     },
     thumbnail: {
       path: null,
-      ext: null,
-    },
+      ext: null
+    }
   };
   const [character, setCharacter] = useState(defaultCharacterState);
 
@@ -24,6 +24,8 @@ const useGetMarvelCharacterById = (characterId) => {
       setCharacter(character);
     }
   };
+
+  /* Marvel.API.getCharacterComics -> changeCharacterComics -> finally */
 
   useEffect(() => {
     startLoading();

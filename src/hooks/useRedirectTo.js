@@ -4,8 +4,8 @@ const useRedirectTo = () => {
   const history = useHistory();
 
   const redirectTo = (route) => {
-    const isInRoute = history.location.pathname === route;
-    if (!isInRoute) {
+    const shouldRedirect = history.location.pathname !== route;
+    if (shouldRedirect) {
       history.push(route);
     }
   };

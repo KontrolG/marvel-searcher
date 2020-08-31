@@ -14,16 +14,14 @@ const CharacterDetails = ({ match, ...props }) => {
   const characterId = match.params.id;
   const [isLoading, character] = useGetMarvelCharacterById(characterId);
 
-  const {
-    name, description, comics, thumbnail,
-  } = character;
+  const { name, description, comics, thumbnail } = character;
   const comicsListItems = comics.items.map(toListItem);
 
-  const thumbnailsSrc = `${thumbnail.path}.${thumbnail.extension}`;
+  const thumbnailsSrc = `${thumbnail.path}/detail.${thumbnail.extension}`;
   return isLoading ? (
     <LoadingSpinner />
   ) : (
-    <>
+    <Fragment>
       <section className="character-details__return-button-wrapper">
         <NavLink to="/">
           <Icon name="arrow-left" />
@@ -47,7 +45,7 @@ const CharacterDetails = ({ match, ...props }) => {
           <ul>{comicsListItems}</ul>
         </section>
       </div>
-    </>
+    </Fragment>
   );
 };
 

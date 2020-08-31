@@ -12,10 +12,10 @@ const getAuthenticationParameters = () => {
   return { ts: timestamp, apikey: publicKey, hash };
 };
 
-const requestToCharactersEndpoint = (params = {}) => {
+const requestToCharactersEndpoint = (params = {}, endpoint = "") => {
   const authenticationParams = getAuthenticationParameters();
 
-  return Axios.get(charactersEndpoint, {
+  return Axios.get(charactersEndpoint + endpoint, {
     params: {
       ...authenticationParams,
       ...params
@@ -25,19 +25,16 @@ const requestToCharactersEndpoint = (params = {}) => {
 
 const getCharacters = () => requestToCharactersEndpoint();
 const getCharacterByName = (name) => requestToCharactersEndpoint({ name });
-
-const getCharacterById = (characterId) => {
-  const authenticationParams = getAuthenticationParameters();
-
-  return Axios.get(`${charactersEndpoint}/${characterId}`, {
-    params: authenticationParams
-  });
-};
+const getCharacterById = (characterId) =>
+  requestToCharactersEndpoint(null, `/${characterId}`);
+const getCharacterComics = (characterId) =>
+  requestToCharactersEndpoint(null, `/${characterId}/comics`);
 
 const MarvelAPI = {
   getCharacters,
   getCharacterByName,
-  getCharacterById
+  getCharacterById,
+  getCharacterComics
 };
 
 export default MarvelAPI;

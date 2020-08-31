@@ -7,7 +7,7 @@ const useGetCharactersResults = () => {
   const {
     characterNameQuery,
     results,
-    setResults,
+    setResults
   } = useCharactersSearchContext();
   const [isLoading, startLoading, finishLoading] = useLoading(true);
 
@@ -18,14 +18,17 @@ const useGetCharactersResults = () => {
     }
   };
 
+  const unmountResults = () => setResults([]);
+
   useEffect(() => {
-    setResults([]);
     startLoading();
-    const APICall = characterNameQuery !== ""
-      ? MarvelAPI.getCharacterByName(characterNameQuery)
-      : MarvelAPI.getCharacters();
+    const APICall =
+      characterNameQuery !== ""
+        ? MarvelAPI.getCharacterByName(characterNameQuery)
+        : MarvelAPI.getCharacters();
 
     APICall.then(changeResults).finally(finishLoading);
+    return unmountResults;
   }, [characterNameQuery]);
 
   return [isLoading, results];
