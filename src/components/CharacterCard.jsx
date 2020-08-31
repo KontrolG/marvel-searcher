@@ -12,7 +12,7 @@ const CharacterCard = ({ character }) => {
   const thumbnailsSrc = `${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`;
 
   return (
-    <NavLink to={`/characters/${id}`}>
+    <NavLink to={`/characters/${id}`} className="character-link">
       <Card className="character-card" component="figure">
         <CardImage src={thumbnailsSrc} />
         <CardContent className="character-card__content" component="figcaption">

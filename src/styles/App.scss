@@ -20,6 +20,10 @@
     url("../assets/fonts/SFUIText-Regular.woff") format("woff");
 }
 
+html {
+  font-size: 14px;
+}
+
 body {
   font: 400 16px/1.5 "SF UI Text Regular", Helvetica, sans-serif;
   background: #f7f8fa;
