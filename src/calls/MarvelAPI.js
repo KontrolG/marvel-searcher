@@ -12,21 +12,36 @@ const getAuthenticationParameters = () => {
   return { ts: timestamp, apikey: publicKey, hash };
 };
 
+const getResponseData = (response) => {
+  const { status, data } = response.data;
+  if (status === "Ok") {
+    return data.results;
+  }
+};
+
 const requestToCharactersEndpoint = (params = {}, endpoint = "") => {
+  const url = charactersEndpoint + endpoint;
   const authenticationParams = getAuthenticationParameters();
 
-  return Axios.get(charactersEndpoint + endpoint, {
+  const parameters = {
     params: {
       ...authenticationParams,
       ...params
     }
-  });
+  };
+
+  return Axios.get(url, parameters).then(getResponseData);
 };
 
 const getCharacters = () => requestToCharactersEndpoint();
 const getCharacterByName = (name) => requestToCharactersEndpoint({ name });
+
+const getCharacterFromData = ([character]) => character;
 const getCharacterById = (characterId) =>
-  requestToCharactersEndpoint(null, `/${characterId}`);
+  requestToCharactersEndpoint(null, `/${characterId}`).then(
+    getCharacterFromData
+  );
+
 const getCharacterComics = (characterId) =>
   requestToCharactersEndpoint(null, `/${characterId}/comics`);
 

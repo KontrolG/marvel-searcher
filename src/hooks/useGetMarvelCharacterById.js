@@ -1,37 +1,48 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import MarvelAPI from "../calls/MarvelAPI";
 import useLoading from "./useLoading";
+import { useCharactersSearchContext } from "../contexts/CharactersSearchContext";
+import { useCharacterDetailsContext } from "../contexts/CharacterDetailsContext";
 
 const useGetMarvelCharacterById = (characterId) => {
   const [isLoading, startLoading, finishLoading] = useLoading(true);
-  const defaultCharacterState = {
-    name: null,
-    description: null,
-    comics: {
-      items: []
-    },
-    thumbnail: {
-      path: null,
-      ext: null
-    }
-  };
-  const [character, setCharacter] = useState(defaultCharacterState);
+  const { character, setCharacter } = useCharacterDetailsContext();
+  const { results } = useCharactersSearchContext();
 
-  const changeCharacter = (response) => {
-    const { status, data } = response.data;
-    if (status === "Ok") {
-      const [character] = data.results;
-      setCharacter(character);
+  const changeCharacter = (character) => setCharacter(character);
+
+  const loadCharacterComics = async (characterDetails) => {
+    const comics = await MarvelAPI.getCharacterComics(characterId);
+    return { ...characterDetails, comics };
+  };
+
+  const isTheSameCharacter = (resultsCharacter) =>
+    characterId === resultsCharacter.id;
+
+  const getCharacterFromResults = () => {
+    if (results.length > 0) {
+      return results.find(isTheSameCharacter);
     }
   };
 
-  /* Marvel.API.getCharacterComics -> changeCharacterComics -> finally */
+  const loadCharacter = () => {
+    const characterFromResults = getCharacterFromResults();
+    if (!characterFromResults) {
+      return MarvelAPI.getCharacterById(characterId);
+    }
+    return Promise.resolve(characterFromResults);
+  };
+
+  const unmountCharacter = () => setCharacter();
 
   useEffect(() => {
     startLoading();
-    MarvelAPI.getCharacterById(characterId)
+    loadCharacter()
+      .then(loadCharacterComics)
       .then(changeCharacter)
       .finally(finishLoading);
+
+    return unmountCharacter;
   }, []);
 
   return [isLoading, character];

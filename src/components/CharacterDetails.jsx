@@ -8,14 +8,17 @@ import CardContent from "./Card/CardContent";
 import CharacterCardTop from "./CharacterCardTop";
 import useGetMarvelCharacterById from "../hooks/useGetMarvelCharacterById";
 
-const toListItem = ({ resourceURI, name }) => <li key={resourceURI}>{name}</li>;
+const toListItem = ({ id, title, description, thumbnail, urls }) => {
+  const link = urls[0] || "http://marvel.com/comics/";
+  return <li key={id}>{title}</li>;
+};
 
 const CharacterDetails = ({ match, ...props }) => {
   const characterId = match.params.id;
   const [isLoading, character] = useGetMarvelCharacterById(characterId);
 
   const { name, description, comics, thumbnail } = character;
-  const comicsListItems = comics.items.map(toListItem);
+  const comicsListItems = comics.map(toListItem);
 
   const thumbnailsSrc = `${thumbnail.path}/detail.${thumbnail.extension}`;
   return isLoading ? (

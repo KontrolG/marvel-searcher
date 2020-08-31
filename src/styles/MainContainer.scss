@@ -11,10 +11,8 @@
 
 .characters {
   margin-top: 70px;
-  width: min-content;
   display: grid;
-  grid-template-columns: repeat(4, 260px);
-  grid-auto-rows: 390px;
+  // grid-template-columns: repeat(3, 260px);
   grid-auto-flow: row;
   gap: 1.85rem;
   max-width: 1200px;
@@ -82,6 +80,12 @@
     width: 85%;
   }
 
+  // width: min-content;
+  .characters {
+    grid-template-columns: repeat(4, auto);
+    grid-auto-rows: minmax(28vw, 420px);
+  }
+
   .character-details__thumbnail {
     height: 65vw;
     max-height: 1000px;
@@ -93,6 +97,9 @@
   }
 }
 @media only screen and (min-width: 1280px) {
+  // .characters {
+  //   grid-template-columns: repeat(4, 260px);
+  // }
   .character-details__info {
     font-size: 1.25em;
   }
