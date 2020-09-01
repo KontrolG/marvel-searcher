@@ -8,6 +8,7 @@ const StyledToggleFavoriteButton = styled(Button)`
   height: 2rem;
   padding: 0 0.25rem;
   outline: none;
+  pointer-events: bounding-box;
 `;
 
 const ToggleFavoriteButton = forwardRef((props, ref) => {

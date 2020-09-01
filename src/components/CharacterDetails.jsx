@@ -1,54 +1,19 @@
 import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
+import ConnectionErrorMessage from "./ConnectionErrorMessage";
 import LoadingSpinner from "./LoadingSpinner";
-import Icon from "./Icon";
-import Card from "./Card/Card";
-import CardImage from "./Card/CardImage";
-import CardContent from "./Card/CardContent";
-import CharacterCardTop from "./CharacterCardTop";
 import useGetMarvelCharacterById from "../hooks/useGetMarvelCharacterById";
-
-const toListItem = ({ id, title, description, thumbnail, urls }) => {
-  const link = urls[0] || "http://marvel.com/comics/";
-  return <li key={id}>{title}</li>;
-};
+import CharacterDetailsSection from "./CharacterDetailsSection";
 
 const CharacterDetails = ({ match, ...props }) => {
   const characterId = match.params.id;
-  const [isLoading, character] = useGetMarvelCharacterById(characterId);
+  const [isLoading, character, error] = useGetMarvelCharacterById(characterId);
 
-  const { name, description, comics, thumbnail } = character;
-  const comicsListItems = comics.map(toListItem);
-
-  const thumbnailsSrc = `${thumbnail.path}/detail.${thumbnail.extension}`;
   return isLoading ? (
     <LoadingSpinner />
+  ) : error ? (
+    <ConnectionErrorMessage />
   ) : (
-    <Fragment>
-      <section className="character-details__return-button-wrapper">
-        <NavLink to="/">
-          <Icon name="arrow-left" />
-        </NavLink>
-      </section>
-      <section className="character-details__thumbnail">
-        <Card>
-          <CardImage src={thumbnailsSrc} />
-          <CardContent>
-            <CharacterCardTop />
-          </CardContent>
-        </Card>
-      </section>
-      <div className="character-details__info">
-        <header>
-          <h2>{name}</h2>
-          <p className="character-details__description">{description}</p>
-        </header>
-        <section>
-          <h3>Comics</h3>
-          <ul>{comicsListItems}</ul>
-        </section>
-      </div>
-    </Fragment>
+    <CharacterDetailsSection character={character} />
   );
 };
 

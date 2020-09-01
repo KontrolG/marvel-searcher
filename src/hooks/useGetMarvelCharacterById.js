@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import MarvelAPI from "../calls/MarvelAPI";
 import useLoading from "./useLoading";
 import { useCharactersSearchContext } from "../contexts/CharactersSearchContext";
@@ -8,6 +8,7 @@ const useGetMarvelCharacterById = (characterId) => {
   const [isLoading, startLoading, finishLoading] = useLoading(true);
   const { character, setCharacter } = useCharacterDetailsContext();
   const { results } = useCharactersSearchContext();
+  const [error, setError] = useState(null);
 
   const changeCharacter = (character) => setCharacter(character);
 
@@ -37,15 +38,18 @@ const useGetMarvelCharacterById = (characterId) => {
 
   useEffect(() => {
     startLoading();
+    setError(null);
+
     loadCharacter()
       .then(loadCharacterComics)
       .then(changeCharacter)
+      .catch(setError)
       .finally(finishLoading);
 
     return unmountCharacter;
   }, []);
 
-  return [isLoading, character];
+  return [isLoading, character, error];
 };
 
 export default useGetMarvelCharacterById;

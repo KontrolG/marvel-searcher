@@ -7,10 +7,11 @@ const iconUnicodeCharacters = {
   "star-outline": "e900",
   star: "e901",
   close: "e904",
-  clock: "e94e",
   spinner: "e97c",
-  wrench: "e991",
+  "system-error": "e991",
   "arrow-left": "ea40",
+  info: "ea0c",
+  "connection-error": "e905"
 };
 
 const Icon = styled.i`
@@ -33,7 +34,7 @@ const Icon = styled.i`
 
 Icon.defaultProps = {
   name: "none",
-  size: "1em",
+  size: "1em"
 };
 
 export default Icon;

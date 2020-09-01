@@ -1,15 +1,18 @@
 import React from "react";
-import CharactersSection from "./CharactersSection";
+import CharactersResultsSection from "./CharactersResultsSection";
 import LoadingSpinner from "./LoadingSpinner";
 import useGetCharactersResults from "../hooks/useGetCharactersResults";
+import ConnectionErrorMessage from "./ConnectionErrorMessage";
 
 const CharactersResults = () => {
-  const [isLoading, results] = useGetCharactersResults();
+  const [isLoading, results, error] = useGetCharactersResults();
 
   return isLoading ? (
     <LoadingSpinner />
+  ) : error ? (
+    <ConnectionErrorMessage />
   ) : (
-    <CharactersSection characters={results} />
+    <CharactersResultsSection characters={results} />
   );
 };
 

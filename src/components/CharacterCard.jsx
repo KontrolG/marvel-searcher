@@ -12,15 +12,15 @@ const CharacterCard = ({ character }) => {
   const thumbnailsSrc = `${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`;
 
   return (
-    <NavLink to={`/characters/${id}`} className="character-link">
-      <Card className="character-card" component="figure">
+    <Card className="character-card" component="figure">
+      <NavLink to={`/characters/${id}`} className="character-link">
         <CardImage src={thumbnailsSrc} />
-        <CardContent className="character-card__content" component="figcaption">
-          <CharacterCardTop />
-          <CharacterCardBottom name={name} />
-        </CardContent>
-      </Card>
-    </NavLink>
+      </NavLink>
+      <CardContent className="character-card__content" component="figcaption">
+        <CharacterCardTop />
+        <CharacterCardBottom name={name} />
+      </CardContent>
+    </Card>
   );
 };
 
