@@ -1,5 +1,5 @@
 import React, { StrictMode } from "react";
-import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import TopBar from "./topBar/TopBar";
 import MainContainer from "./mainContainer/MainContainer";
 import { CharactersSearchProvider } from "../contexts/CharactersSearchContext";
