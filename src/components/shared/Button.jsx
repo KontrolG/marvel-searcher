@@ -21,7 +21,9 @@ const StyledButton = styled.button`
 `;
 
 const Button = forwardRef((props, ref) => {
-  const { className, onClick, icon, children, type } = props;
+  const {
+    className, onClick, icon, children, type,
+  } = props;
   return (
     <StyledButton type={type} ref={ref} className={className} onClick={onClick}>
       {icon && <Icon name={icon.name} size={icon.size} />}
@@ -33,8 +35,8 @@ const Button = forwardRef((props, ref) => {
 Button.propTypes = {
   icon: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    size: PropTypes.string
+    size: PropTypes.string,
   }),
-  children: PropTypes.element
+  children: PropTypes.element,
 };
 export default Button;

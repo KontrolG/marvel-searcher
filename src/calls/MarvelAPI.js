@@ -26,8 +26,8 @@ const requestToCharactersEndpoint = (params = {}, endpoint = "") => {
   const parameters = {
     params: {
       ...authenticationParams,
-      ...params
-    }
+      ...params,
+    },
   };
 
   return Axios.get(url, parameters).then(getResponseData);
@@ -37,19 +37,17 @@ const getCharacters = () => requestToCharactersEndpoint();
 const getCharacterByName = (name) => requestToCharactersEndpoint({ name });
 
 const getCharacterFromData = ([character]) => character;
-const getCharacterById = (characterId) =>
-  requestToCharactersEndpoint(null, `/${characterId}`).then(
-    getCharacterFromData
-  );
+const getCharacterById = (characterId) => requestToCharactersEndpoint(null, `/${characterId}`).then(
+  getCharacterFromData,
+);
 
-const getCharacterComics = (characterId) =>
-  requestToCharactersEndpoint(null, `/${characterId}/comics`);
+const getCharacterComics = (characterId) => requestToCharactersEndpoint(null, `/${characterId}/comics`);
 
 const MarvelAPI = {
   getCharacters,
   getCharacterByName,
   getCharacterById,
-  getCharacterComics
+  getCharacterComics,
 };
 
 export default MarvelAPI;

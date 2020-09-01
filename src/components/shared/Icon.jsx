@@ -11,7 +11,7 @@ const iconUnicodeCharacters = {
   "system-error": "e991",
   "arrow-left": "ea40",
   info: "ea0c",
-  "connection-error": "e905"
+  "connection-error": "e905",
 };
 
 const Icon = styled.i`
@@ -36,7 +36,7 @@ const Icon = styled.i`
 Icon.defaultProps = {
   name: "none",
   size: "1em",
-  color: "inherit"
+  color: "inherit",
 };
 
 export default Icon;

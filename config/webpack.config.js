@@ -1,6 +1,7 @@
 "use strict";
 
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -42,6 +43,7 @@ module.exports = {
     minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./src/assets/index.html",
@@ -59,20 +61,20 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        enforce: "pre",
-        test: /\.(js|jsx)$/i,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "eslint-loader",
-            options: {
-              cache: true,
-              fix: true
-            }
-          }
-        ]
-      },
+      // {
+      //   enforce: "pre",
+      //   test: /\.(js|jsx)$/i,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     {
+      //       loader: "eslint-loader",
+      //       options: {
+      //         cache: true,
+      //         fix: true
+      //       }
+      //     }
+      //   ]
+      // },
       {
         test: /\.(sa|sc|c)ss$/i,
         use: [

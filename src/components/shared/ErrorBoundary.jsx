@@ -5,7 +5,7 @@ class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasError: false
+      hasError: false,
     };
   }
 
@@ -21,7 +21,7 @@ class ErrorBoundary extends Component {
         type="system-error"
       />
     ) : (
-      <Fragment>{this.props.children}</Fragment>
+      <>{this.props.children}</>
     );
   }
 }

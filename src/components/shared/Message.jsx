@@ -13,13 +13,11 @@ const StyledMessage = styled.div`
   }
 `;
 
-const Message = ({ message, type }) => {
-  return (
-    <StyledMessage>
-      {type && <Icon name={type} size="4rem" />}
-      <p>{message}</p>
-    </StyledMessage>
-  );
-};
+const Message = ({ message, type }) => (
+  <StyledMessage>
+    {type && <Icon name={type} size="4rem" />}
+    <p>{message}</p>
+  </StyledMessage>
+);
 
 export default Message;

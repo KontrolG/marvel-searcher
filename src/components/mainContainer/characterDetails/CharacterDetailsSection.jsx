@@ -10,7 +10,9 @@ import getThumbnailUrl from "../../../utils/getThumbnailUrl";
 import CharacterDetailsComics from "./CharacterDetailsComics";
 
 const CharacterDetailsSection = ({ character }) => {
-  const { thumbnail, name, description, comics } = character;
+  const {
+    thumbnail, name, description, comics,
+  } = character;
   const hasValidCharacter = name !== "";
   if (!hasValidCharacter) {
     return <CharacterNotFoundMessage />;
@@ -19,7 +21,7 @@ const CharacterDetailsSection = ({ character }) => {
   const thumbnailsSrc = getThumbnailUrl(thumbnail, "detail");
 
   return (
-    <Fragment>
+    <>
       <section className="character-details__return-button-wrapper">
         <NavLink to="/">
           <Icon name="arrow-left" />
@@ -40,7 +42,7 @@ const CharacterDetailsSection = ({ character }) => {
         </header>
         <CharacterDetailsComics comics={comics} />
       </div>
-    </Fragment>
+    </>
   );
 };
 

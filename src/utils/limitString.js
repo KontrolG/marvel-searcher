@@ -4,7 +4,8 @@ const limitString = (string, limit = 17) => {
 
   let characterCount = 0;
   const words = string.split(" ");
-  for (const word of words) {
+  for (let index = 0; index < words.length; index += 1) {
+    const word = words[index];
     const isInLimit = characterCount + word.length <= limit;
     if (!isInLimit) {
       break;
@@ -13,6 +14,7 @@ const limitString = (string, limit = 17) => {
     newString.push(word);
     characterCount += word.length;
   }
+
   return `${newString.join(" ")} ...`;
 };
 

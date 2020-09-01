@@ -23,7 +23,7 @@ const Card = forwardRef(({ component, children, ...props }, ref) => {
 Card.defaultProps = {
   component: "div",
   width: "100%",
-  height: "100%"
+  height: "100%",
 };
 
 export default Card;

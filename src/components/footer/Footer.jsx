@@ -7,14 +7,12 @@ const StyledFooter = styled.footer`
   color: #aaa;
 `;
 
-const Footer = (props) => {
-  return (
-    <StyledFooter>
-      <a href="http://marvel.com" title="Marvel Homepage" target="_blank">
-        Data provided by Marvel. © 2020 MARVEL
-      </a>
-    </StyledFooter>
-  );
-};
+const Footer = (props) => (
+  <StyledFooter>
+    <a href="http://marvel.com" title="Marvel Homepage" target="_blank" rel="noreferrer">
+      Data provided by Marvel. © 2020 MARVEL
+    </a>
+  </StyledFooter>
+);
 
 export default Footer;

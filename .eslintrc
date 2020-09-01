@@ -1,20 +1,17 @@
 {
-  "ignorePatterns": [
-    "node_modules/"
-  ],
-  "extends": [
-    "airbnb"
-  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ignorePatterns": ["node_modules/"],
+  "extends": ["airbnb"],
   "rules": {
     "react/jsx-filename-extension": "warn",
     "quotes": "off",
     "no-console": "warn",
     "consistent-return": "off",
     "func-names": "off",
-    "object-shorthand": [
-      "warn",
-      "always"
-    ],
+    "object-shorthand": ["warn", "always"],
     "no-process-exit": "off",
     "no-param-reassign": [
       "error",

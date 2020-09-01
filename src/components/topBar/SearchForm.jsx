@@ -14,7 +14,7 @@ const StyledInput = styled.input`
 const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
   const {
     characterNameQuery,
-    setCharacterNameQuery
+    setCharacterNameQuery,
   } = useCharactersSearchContext();
   const [inputValue, changeInputValue] = useInput(characterNameQuery);
   const redirectTo = useRedirectTo();
@@ -31,7 +31,7 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
       setCharacterNameQuery(inputValue);
       redirectToCharactersResults();
     },
-    [inputValue]
+    [inputValue],
   );
 
   const focusInput = () => {
@@ -52,8 +52,7 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
   useEffect(forceSearchIsOpen, [characterNameQuery]);
 
   const closeSearch = useCallback(() => {
-    const shouldToggleSearchIsOpen =
-      searchIsOpen && inputValue === "" && characterNameQuery === "";
+    const shouldToggleSearchIsOpen = searchIsOpen && inputValue === "" && characterNameQuery === "";
     if (shouldToggleSearchIsOpen) {
       toggleSearchIsOpen();
     }

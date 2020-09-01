@@ -10,15 +10,14 @@ const useGetMarvelCharacterById = (characterId) => {
   const { results } = useCharactersSearchContext();
   const [error, setError] = useState(null);
 
-  const changeCharacter = (character) => setCharacter(character);
+  const changeCharacter = (responseCharacter) => setCharacter(responseCharacter);
 
   const loadCharacterComics = async (characterDetails) => {
     const comics = await MarvelAPI.getCharacterComics(characterId);
     return { ...characterDetails, comics };
   };
 
-  const isTheSameCharacter = (resultsCharacter) =>
-    characterId === resultsCharacter.id;
+  const isTheSameCharacter = (resultsCharacter) => characterId === resultsCharacter.id;
 
   const getCharacterFromResults = () => {
     if (results.length > 0) {

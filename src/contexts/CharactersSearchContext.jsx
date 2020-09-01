@@ -1,6 +1,7 @@
 import React, {
   createContext, useState, useContext, memo,
 } from "react";
+import PropTypes from "prop-types";
 
 const defaultState = {
   characterNameQuery: "",
@@ -29,6 +30,10 @@ const CharactersSearchProvider = ({ children }) => {
       {children}
     </CharactersSearchContext.Provider>
   );
+};
+
+CharactersSearchProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
 export default CharactersSearchContext;

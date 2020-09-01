@@ -4,13 +4,14 @@ import Message from "../../shared/Message";
 
 const CharacterNotFoundMessage = () => {
   const message = (
-    <Fragment>
-      No se encontró el personaje. ¿Quieres regresar al{" "}
+    <>
+      No se encontró el personaje. ¿Quieres regresar al
+      {" "}
       <NavLink to="/" className="back-to-home-link">
         inicio
       </NavLink>
       ?
-    </Fragment>
+    </>
   );
   return <Message message={message} type="info" />;
 };

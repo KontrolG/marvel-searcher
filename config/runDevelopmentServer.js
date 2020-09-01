@@ -1,13 +1,13 @@
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
-const webpackConfig = require("./webpack.development");
+const webpackConfiguration = require("./webpack.config");
 
-const webpackCompiler = webpack(webpackConfig);
+const webpackCompiler = webpack(webpackConfiguration);
 
 const devServer = new WebpackDevServer(
   webpackCompiler,
-  webpackConfig.devServer
+  webpackConfiguration.devServer
 );
 
-const { port, host } = webpackConfig.devServer;
+const { port, host } = webpackConfiguration.devServer;
 devServer.listen(port, host);

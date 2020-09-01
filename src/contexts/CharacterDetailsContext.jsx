@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
+import PropTypes from "prop-types";
 
 const defaultState = {
   character: {
@@ -7,10 +8,10 @@ const defaultState = {
     comics: [],
     thumbnail: {
       path: null,
-      ext: null
-    }
+      ext: null,
+    },
   },
-  setCharacter: () => {}
+  setCharacter: () => {},
 };
 
 const CharacterDetailsContext = createContext(defaultState);
@@ -19,7 +20,7 @@ const CharacterDetailsProvider = ({ children }) => {
   const [character, setCharacterValue] = useState(defaultState.character);
 
   const setCharacter = (character) => {
-    const characterValue = character ? character : defaultState.character;
+    const characterValue = character || defaultState.character;
     setCharacterValue(characterValue);
   };
 
@@ -34,7 +35,10 @@ const CharacterDetailsProvider = ({ children }) => {
 
 export default CharacterDetailsContext;
 
-export const useCharacterDetailsContext = () =>
-  useContext(CharacterDetailsContext);
+CharacterDetailsProvider.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+export const useCharacterDetailsContext = () => useContext(CharacterDetailsContext);
 
 export { CharacterDetailsProvider };

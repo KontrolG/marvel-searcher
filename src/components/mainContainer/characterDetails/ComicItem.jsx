@@ -41,7 +41,9 @@ const StyledAnchor = styled.a`
 `;
 
 const ComicItem = ({ comic }) => {
-  const { title, description, thumbnail, urls } = comic;
+  const {
+    title, description, thumbnail, urls,
+  } = comic;
   const comicDetailLink = urls.find(isComicDetailLink);
   const comicDetailUrl = comicDetailLink
     ? comicDetailLink.url
@@ -52,6 +54,7 @@ const ComicItem = ({ comic }) => {
       href={comicDetailUrl}
       title={`Ver más detalles sobre ${title}`}
       target="_blank"
+      rel="noreferrer"
     >
       <div className="comic-thumbnail">
         <Card>
