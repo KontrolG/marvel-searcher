@@ -1,6 +1,6 @@
 .main-container {
   padding: 5rem 0;
-  min-height: 100vh;
+  min-height: calc(100vh - 3rem);
   max-width: 1400px;
   width: 80%;
   margin: 0 auto;
@@ -25,59 +25,50 @@
   width: 100%;
 }
 
-@supports not (display: grid) {
-  .characters {
-    width: auto;
-    --gap-row: 0.625rem;
-    --gap-column: 0.75rem;
-    display: flex;
-    flex-wrap: wrap;
-    margin: calc(-2 * var(--gap-row)) calc(-2 * var(--gap-column));
-    justify-content: center;
-  }
-
-  .character-card {
-    margin: var(--gap-row) var(--gap-column);
-  }
-}
-
 .character-card {
   width: 100%;
   height: 100%;
   color: white;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+  }
 }
 
-.character-card__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  pointer-events: none;
+.character-details {
+  &__return-button-wrapper {
+    flex-basis: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    font-size: 2rem;
+  }
+
+  &__thumbnail {
+    flex: 1 1 400px;
+    margin-bottom: 2rem;
+  }
+
+  &__info {
+    flex: 1 0 50%;
+  }
+
+  &__description {
+    margin-bottom: 2rem;
+  }
+
+  &__comics {
+    list-style-position: inside;
+  }
 }
 
-.character-details__return-button-wrapper {
-  flex-basis: 100%;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  align-self: center;
-  font-size: 2rem;
-}
-
-.character-details__thumbnail {
-  flex: 1 1 400px;
-  margin-bottom: 2rem;
-}
-
-.character-details__info {
-  flex: 1 0 50%;
-}
-
-.character-details__description {
-  margin-bottom: 2rem;
-}
-
-.character-details__comics {
-  list-style-position: inside;
+.back-to-home-link[href] {
+  text-decoration: underline;
+  color: #ed1d24;
 }
 
 @media only screen and (max-width: 600px) {
@@ -100,6 +91,19 @@
     gap: 1rem;
     grid-template-columns: repeat(3, 25vw);
     grid-auto-flow: row;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .character-details__thumbnail {
+    .character-card__top {
+      height: 30% !important;
+      background-image: linear-gradient(
+        30deg,
+        transparent 70%,
+        rgba(0, 0, 0, 0.6)
+      ) !important;
+    }
   }
 }
 
@@ -139,5 +143,21 @@
 @media only screen and (min-width: 1920px) {
   body {
     font-size: 20px;
+  }
+}
+
+@supports not (display: grid) {
+  .characters {
+    width: auto;
+    --gap-row: 0.625rem;
+    --gap-column: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(-2 * var(--gap-row)) calc(-2 * var(--gap-column));
+    justify-content: center;
+  }
+
+  .character-card {
+    margin: var(--gap-row) var(--gap-column);
   }
 }

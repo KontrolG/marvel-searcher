@@ -4,6 +4,7 @@ import TopBar from "./TopBar";
 import MainContainer from "./MainContainer";
 import { CharactersSearchProvider } from "../contexts/CharactersSearchContext";
 import "../styles/App.scss";
+import Footer from "./Footer";
 
 const App = () => (
   <StrictMode>
@@ -13,6 +14,7 @@ const App = () => (
         <MainContainer />
       </Router>
     </CharactersSearchProvider>
+    <Footer />
   </StrictMode>
 );
 

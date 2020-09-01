@@ -16,6 +16,7 @@ const iconUnicodeCharacters = {
 
 const Icon = styled.i`
   font-family: "icons" !important;
+  color: ${({ color }) => color};
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -34,7 +35,8 @@ const Icon = styled.i`
 
 Icon.defaultProps = {
   name: "none",
-  size: "1em"
+  size: "1em",
+  color: "inherit"
 };
 
 export default Icon;

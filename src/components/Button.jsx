@@ -21,9 +21,9 @@ const StyledButton = styled.button`
 `;
 
 const Button = forwardRef((props, ref) => {
-  const { className, onClick, icon, children } = props;
+  const { className, onClick, icon, children, type } = props;
   return (
-    <StyledButton ref={ref} className={className} onClick={onClick}>
+    <StyledButton type={type} ref={ref} className={className} onClick={onClick}>
       {icon && <Icon name={icon.name} size={icon.size} />}
       {children}
     </StyledButton>

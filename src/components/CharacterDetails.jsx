@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import ConnectionErrorMessage from "./ConnectionErrorMessage";
+import CharacterDetailsErrorMessage from "./CharacterDetailsErrorMessage";
 import LoadingSpinner from "./LoadingSpinner";
 import useGetMarvelCharacterById from "../hooks/useGetMarvelCharacterById";
 import CharacterDetailsSection from "./CharacterDetailsSection";
@@ -11,7 +11,7 @@ const CharacterDetails = ({ match, ...props }) => {
   return isLoading ? (
     <LoadingSpinner />
   ) : error ? (
-    <ConnectionErrorMessage />
+    <CharacterDetailsErrorMessage error={error} />
   ) : (
     <CharacterDetailsSection character={character} />
   );

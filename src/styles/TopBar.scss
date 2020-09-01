@@ -13,49 +13,82 @@ $grey: #adadad;
   box-shadow: 0 0 2px 0px #aaa;
   width: 100%;
   z-index: 9999;
-}
 
-.top-bar__logo {
-  margin-right: 1.5rem;
-}
+  &__logo {
+    margin-right: 1.5rem;
+    transition: all 0.2s ease;
+  }
 
-.top-bar__search {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  border-left: 1px solid $light-grey;
-  padding: 0 1.5rem 0 1.25rem;
-  max-width: 1300px;
-}
+  &__search {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    border-left: 1px solid $light-grey;
+    padding: 0 1.5rem 0 1.25rem;
+    max-width: 1300px;
+    justify-content: flex-end;
 
-.top-bar__search__button {
-  cursor: unset !important;
-  padding: 0.25rem 0.25rem 0;
-  margin-right: 0.25rem;
-}
+    &__button {
+      cursor: unset !important;
+      padding: 0.25rem 0.25rem 0;
+      margin-right: 0.25rem;
+      outline: none;
+    }
 
-.top-bar__search__input {
-  // outline: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-  flex: 1;
-  color: $grey;
-}
+    &__input {
+      border: none;
+      color: inherit;
+      font: inherit;
+      flex: 1;
+      color: $grey;
+    }
 
-.top-bar__search__input::placeholder {
-  color: inherit;
-}
+    &__input::placeholder {
+      color: inherit;
+    }
+  }
 
-.top-bar__toggle-favorites {
-  font-size: 1.75rem !important;
-  color: $grey !important;
-  position: relative;
+  &__toggle-favorites {
+    font-size: 1.75rem !important;
+    color: $grey !important;
+    position: relative;
+  }
 }
 
 @media only screen and (max-width: 599px) {
-  .top-bar__search__input {
-    display: none;
+  .top-bar {
+    &__search {
+      padding: 0;
+      &__button:focus > &__input {
+        width: auto;
+      }
+
+      &__input {
+        width: 0;
+        flex: 0 !important;
+      }
+    }
+  }
+
+  .top-bar.search-open {
+    .top-bar__logo {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .top-bar__search {
+      padding-right: 1.25rem;
+      border: none;
+
+      &__input {
+        width: auto;
+        flex: 1 0 auto !important;
+      }
+    }
   }
 }
 
@@ -63,16 +96,16 @@ $grey: #adadad;
   .top-bar {
     height: 70px;
     padding: 0.85rem 5.75rem 0.85rem 1.25rem;
-  }
 
-  .top-bar__toggle-favorites::after {
-    content: "";
-    height: 1.5rem;
-    background: #dedede;
-    width: 1px;
-    display: block;
-    position: absolute;
-    top: 0.25rem;
-    left: 3rem;
+    &__toggle-favorites::after {
+      content: "";
+      height: 1.5rem;
+      background: #dedede;
+      width: 1px;
+      display: block;
+      position: absolute;
+      top: 0.25rem;
+      left: 3rem;
+    }
   }
 }
