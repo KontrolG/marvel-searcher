@@ -1,9 +1,9 @@
 import React, { createRef, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import useInput from "../hooks/useInput";
-import Button from "./Button";
-import { useCharactersSearchContext } from "../contexts/CharactersSearchContext";
-import useRedirectTo from "../hooks/useRedirectTo";
+import useInput from "../../hooks/useInput";
+import Button from "../shared/Button";
+import { useCharactersSearchContext } from "../../contexts/CharactersSearchContext";
+import useRedirectTo from "../../hooks/useRedirectTo";
 
 const StyledInput = styled.input`
   border: none;

@@ -1,10 +1,10 @@
 import React, { StrictMode } from "react";
 import { HashRouter as Router } from "react-router-dom";
-import TopBar from "./TopBar";
-import MainContainer from "./MainContainer";
+import TopBar from "./topBar/TopBar";
+import MainContainer from "./mainContainer/MainContainer";
 import { CharactersSearchProvider } from "../contexts/CharactersSearchContext";
 import "../styles/App.scss";
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 
 const App = () => (
   <StrictMode>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ToggleFavoriteButton from "./ToggleFavoriteButton";
+import ToggleFavoriteButton from "../shared/ToggleFavoriteButton";
 
 const StyledCharacterCardTop = styled.div`
   padding: 0.75rem;

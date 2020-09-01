@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import Message from "./Message";
+import Message from "../../shared/Message";
 
 const CharacterNotFoundMessage = () => {
   const message = (

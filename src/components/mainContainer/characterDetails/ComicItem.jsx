@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./Card/Card";
-import CardImage from "./Card/CardImage";
-import CardContent from "./Card/CardContent";
-import CharacterCardTop from "./CharacterCardTop";
-import getThumbnailUrl from "../utils/getThumbnailUrl";
-import getSanitizedDescription from "../utils/getSanitizedDescription";
+import Card from "../../shared/Card/Card";
+import CardImage from "../../shared/Card/CardImage";
+import CardContent from "../../shared/Card/CardContent";
+import CharacterCardTop from "../CharacterCardTop";
+import getThumbnailUrl from "../../../utils/getThumbnailUrl";
+import getSanitizedDescription from "../../../utils/getSanitizedDescription";
 
 const isComicDetailLink = (link) => link.type === "detail";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import Logo from "./Logo";
+import Logo from "../shared/Logo";
 import SearchForm from "./SearchForm";
-import ToggleFavoriteButton from "./ToggleFavoriteButton";
-import useToggle from "../hooks/useToggle";
+import ToggleFavoriteButton from "../shared/ToggleFavoriteButton";
+import useToggle from "../../hooks/useToggle";
 
 const TopBar = (props) => {
   const [searchIsOpen, toggleSearchIsOpen] = useToggle(false);

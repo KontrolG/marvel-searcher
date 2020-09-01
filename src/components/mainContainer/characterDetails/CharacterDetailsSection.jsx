@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import CharacterNotFoundMessage from "./CharacterNotFoundMessage";
-import Icon from "./Icon";
-import Card from "./Card/Card";
-import CardImage from "./Card/CardImage";
-import CardContent from "./Card/CardContent";
-import CharacterCardTop from "./CharacterCardTop";
-import getThumbnailUrl from "../utils/getThumbnailUrl";
+import Icon from "../../shared/Icon";
+import Card from "../../shared/Card/Card";
+import CardImage from "../../shared/Card/CardImage";
+import CardContent from "../../shared/Card/CardContent";
+import CharacterCardTop from "../CharacterCardTop";
+import getThumbnailUrl from "../../../utils/getThumbnailUrl";
 import CharacterDetailsComics from "./CharacterDetailsComics";
 
 const CharacterDetailsSection = ({ character }) => {

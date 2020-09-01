@@ -1,6 +1,6 @@
 import React from "react";
-import CharacterCard from "./CharacterCard";
-import Message from "./Message";
+import CharacterCard from "../CharacterCard";
+import Message from "../../shared/Message";
 
 const toCharacterCard = (character) => (
   <CharacterCard character={character} key={character.id} />

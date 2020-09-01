@@ -1,6 +1,6 @@
 import React from "react";
 import CharacterNotFoundMessage from "./CharacterNotFoundMessage";
-import ConnectionErrorMessage from "./ConnectionErrorMessage";
+import ConnectionErrorMessage from "../../shared/ConnectionErrorMessage";
 
 const CharacterDetailsErrorMessage = ({ error }) => {
   if (error.response && error.response.statusText === "Not Found") {

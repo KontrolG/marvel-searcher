@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
 import Button from "./Button";
-import useToggle from "../hooks/useToggle";
+import useToggle from "../../hooks/useToggle";
 
 const StyledToggleFavoriteButton = styled(Button)`
   font-size: 1.5rem;

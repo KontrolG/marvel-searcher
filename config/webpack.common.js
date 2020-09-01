@@ -17,7 +17,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./src/assets/index.html"
+      template: "./src/assets/index.html",
+      favicon: "./src/assets/favicon.ico"
     }),
     new webpack.DefinePlugin(clientEnviromentVariables.stringified)
   ],

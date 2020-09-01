@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import CharacterDetailsErrorMessage from "./CharacterDetailsErrorMessage";
-import LoadingSpinner from "./LoadingSpinner";
-import useGetMarvelCharacterById from "../hooks/useGetMarvelCharacterById";
+import LoadingSpinner from "../../shared/LoadingSpinner";
+import useGetMarvelCharacterById from "../../../hooks/useGetMarvelCharacterById";
 import CharacterDetailsSection from "./CharacterDetailsSection";
 
 const CharacterDetails = ({ match, ...props }) => {

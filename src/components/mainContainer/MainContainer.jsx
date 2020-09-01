@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import ErrorBoundary from "./ErrorBoundary";
-import CharactersResults from "./CharactersResults";
-import CharacterDetails from "./CharacterDetails";
-import { CharacterDetailsProvider } from "../contexts/CharacterDetailsContext";
+import ErrorBoundary from "../shared/ErrorBoundary";
+import CharactersResults from "./charactersResults/CharactersResults";
+import CharacterDetails from "./characterDetails/CharacterDetails";
+import { CharacterDetailsProvider } from "../../contexts/CharacterDetailsContext";
 
 const MainContainer = () => (
   <main className="main-container">
