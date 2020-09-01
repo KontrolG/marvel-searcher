@@ -6,11 +6,8 @@ import Card from "./Card/Card";
 import CardImage from "./Card/CardImage";
 import CardContent from "./Card/CardContent";
 import CharacterCardTop from "./CharacterCardTop";
-
-const toListItem = ({ id, title, description, thumbnail, urls }) => {
-  const link = urls[0] || "http://marvel.com/comics/";
-  return <li key={id}>{title}</li>;
-};
+import getThumbnailUrl from "../utils/getThumbnailUrl";
+import CharacterDetailsComics from "./CharacterDetailsComics";
 
 const CharacterDetailsSection = ({ character }) => {
   const { thumbnail, name, description, comics } = character;
@@ -19,9 +16,7 @@ const CharacterDetailsSection = ({ character }) => {
     return <CharacterNotFoundMessage />;
   }
 
-  // const { name, description, comics, thumbnail } = character;
-  const thumbnailsSrc = `${thumbnail.path}/detail.${thumbnail.extension}`;
-  const comicsListItems = comics.map(toListItem);
+  const thumbnailsSrc = getThumbnailUrl(thumbnail, "detail");
 
   return (
     <Fragment>
@@ -43,10 +38,7 @@ const CharacterDetailsSection = ({ character }) => {
           <h2>{name}</h2>
           <p className="character-details__description">{description}</p>
         </header>
-        <section>
-          <h3>Comics</h3>
-          <ul>{comicsListItems}</ul>
-        </section>
+        <CharacterDetailsComics comics={comics} />
       </div>
     </Fragment>
   );

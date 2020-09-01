@@ -7,7 +7,7 @@ const CharacterNotFoundMessage = () => {
     <Fragment>
       No se encontró el personaje. ¿Quieres regresar al{" "}
       <NavLink to="/" className="back-to-home-link">
-        buscador
+        inicio
       </NavLink>
       ?
     </Fragment>
