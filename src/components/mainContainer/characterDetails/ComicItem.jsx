@@ -6,6 +6,7 @@ import CardContent from "../../shared/Card/CardContent";
 import CharacterCardTop from "../CharacterCardTop";
 import getThumbnailUrl from "../../../utils/getThumbnailUrl";
 import getSanitizedDescription from "../../../utils/getSanitizedDescription";
+import getSecureUrl from "../../../utils/getSecureUrl";
 
 const isComicDetailLink = (link) => link.type === "detail";
 
@@ -51,7 +52,7 @@ const ComicItem = ({ comic }) => {
 
   return (
     <StyledAnchor
-      href={comicDetailUrl}
+      href={getSecureUrl(comicDetailUrl)}
       title={`Ver más detalles sobre ${title}`}
       target="_blank"
       rel="noreferrer"
