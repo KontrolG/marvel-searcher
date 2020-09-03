@@ -8,7 +8,7 @@ const toComicListItem = (comic) => (
 );
 
 const CharacterDetailsComics = ({ comics }) => {
-  const comicsListItems = comics.length > 0 && comics.map(toComicListItem);
+  const comicsListItems = comics.length > 0 ? comics.map(toComicListItem) : null;
 
   return comicsListItems ? (
     <section>
