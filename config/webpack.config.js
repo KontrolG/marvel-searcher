@@ -61,20 +61,21 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   enforce: "pre",
-      //   test: /\.(js|jsx)$/i,
-      //   exclude: /node_modules/,
-      //   use: [
-      //     {
-      //       loader: "eslint-loader",
-      //       options: {
-      //         cache: true,
-      //         fix: true
-      //       }
-      //     }
-      //   ]
-      // },
+      {
+        enforce: "pre",
+        test: /\.(js|jsx)$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "eslint-loader",
+            options: {
+              cache: true,
+              fix: true,
+              configFile: path.resolve(__dirname, "../.eslintrc.json")
+            }
+          }
+        ]
+      },
       {
         test: /\.(sa|sc|c)ss$/i,
         use: [
