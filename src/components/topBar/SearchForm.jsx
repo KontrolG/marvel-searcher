@@ -1,4 +1,5 @@
 import React, { createRef, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import useInput from "../../hooks/useInput";
 import Button from "../shared/Button";
@@ -14,7 +15,7 @@ const StyledInput = styled.input`
 const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
   const {
     characterNameQuery,
-    setCharacterNameQuery,
+    setCharacterNameQuery
   } = useCharactersSearchContext();
   const [inputValue, changeInputValue] = useInput(characterNameQuery);
   const redirectTo = useRedirectTo();
@@ -31,7 +32,7 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
       setCharacterNameQuery(inputValue);
       redirectToCharactersResults();
     },
-    [inputValue],
+    [inputValue]
   );
 
   const focusInput = () => {
@@ -52,7 +53,8 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
   useEffect(forceSearchIsOpen, [characterNameQuery]);
 
   const closeSearch = useCallback(() => {
-    const shouldToggleSearchIsOpen = searchIsOpen && inputValue === "" && characterNameQuery === "";
+    const shouldToggleSearchIsOpen =
+      searchIsOpen && inputValue === "" && characterNameQuery === "";
     if (shouldToggleSearchIsOpen) {
       toggleSearchIsOpen();
     }
@@ -80,6 +82,15 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
       />
     </form>
   );
+};
+
+SearchForm.defaultProps = {
+  searchIsOpen: false
+};
+
+SearchForm.propTypes = {
+  searchIsOpen: PropTypes.bool,
+  toggleSearchIsOpen: PropTypes.func.isRequired
 };
 
 export default SearchForm;
