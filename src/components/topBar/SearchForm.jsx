@@ -5,6 +5,7 @@ import useInput from "../../hooks/useInput";
 import Button from "../shared/Button";
 import { useCharactersSearchContext } from "../../contexts/CharactersSearchContext";
 import useRedirectTo from "../../hooks/useRedirectTo";
+import useSearchParams from "../../hooks/useSearchParams";
 
 const StyledInput = styled.input`
   border: none;
@@ -17,9 +18,21 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
     characterNameQuery,
     setCharacterNameQuery
   } = useCharactersSearchContext();
-  const [inputValue, changeInputValue] = useInput(characterNameQuery);
+  const [getSearchParams, changeSearchParams] = useSearchParams();
+  const [inputValue, changeInputValue, setInputValue] = useInput(
+    characterNameQuery
+  );
   const redirectTo = useRedirectTo();
   const inputRef = createRef();
+
+  useEffect(() => {
+    const characterSearchQuery = getSearchParams().character || "";
+    setCharacterNameQuery(characterSearchQuery);
+  }, []);
+
+  useEffect(() => {
+    setInputValue(characterNameQuery);
+  }, [characterNameQuery]);
 
   const redirectToCharactersResults = () => {
     const charactersResultsRoute = "/";
@@ -31,6 +44,9 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
       event.preventDefault();
       setCharacterNameQuery(inputValue);
       redirectToCharactersResults();
+      changeSearchParams({
+        character: inputValue
+      });
     },
     [inputValue]
   );

@@ -8,7 +8,7 @@ const useInput = (defaultInputValue) => {
     setInputValue(targetInputValue);
   };
 
-  return [inputValue, changeInputValue];
+  return [inputValue, changeInputValue, setInputValue];
 };
 
 export default useInput;
