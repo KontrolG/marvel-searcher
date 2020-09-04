@@ -39,7 +39,14 @@ CharacterDetailsProvider.propTypes = {
   children: PropTypes.element.isRequired
 };
 
-export const useCharacterDetailsContext = () =>
-  useContext(CharacterDetailsContext);
+export const useCharacterDetailsContext = () => {
+  const context = useContext(CharacterDetailsContext);
+  if (!context) {
+    throw new Error(
+      "useCharacterDetailsContext must be used within a CharacterDetailsProvider"
+    );
+  }
+  return context;
+};
 
 export { CharacterDetailsProvider };
