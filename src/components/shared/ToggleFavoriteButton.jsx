@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Button from "./Button";
 import useToggle from "../../hooks/useToggle";
@@ -11,7 +12,7 @@ const StyledToggleFavoriteButton = styled(Button)`
   pointer-events: bounding-box;
 `;
 
-const ToggleFavoriteButton = forwardRef((props, ref) => {
+const ToggleFavoriteButton = forwardRef(({ className }, ref) => {
   const [isFavorite, toggleIsFavorite] = useToggle(false);
 
   const iconName = isFavorite ? "star" : "star-outline";
@@ -20,10 +21,18 @@ const ToggleFavoriteButton = forwardRef((props, ref) => {
     <StyledToggleFavoriteButton
       icon={{ name: iconName }}
       ref={ref}
-      {...props}
+      className={className}
       onClick={toggleIsFavorite}
     />
   );
 });
+
+ToggleFavoriteButton.defaultProps = {
+  className: ""
+};
+
+ToggleFavoriteButton.propTypes = {
+  className: PropTypes.string
+};
 
 export default ToggleFavoriteButton;

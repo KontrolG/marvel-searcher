@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
 import Icon from "./Icon";
 
@@ -19,10 +20,18 @@ const StyledLoadingSpinner = styled.div`
   }
 `;
 
-const LoadingSpinner = forwardRef((props, ref) => (
-  <StyledLoadingSpinner {...props} ref={ref}>
+const LoadingSpinner = forwardRef(({ className }, ref) => (
+  <StyledLoadingSpinner className={className} ref={ref}>
     <Icon name="spinner" />
   </StyledLoadingSpinner>
 ));
+
+LoadingSpinner.defaultProps = {
+  className: ""
+};
+
+LoadingSpinner.propTypes = {
+  className: PropTypes.string
+};
 
 export default LoadingSpinner;

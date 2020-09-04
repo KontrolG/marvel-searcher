@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledCardImage = styled.img`
@@ -7,8 +8,16 @@ const StyledCardImage = styled.img`
   object-fit: cover;
 `;
 
-const CardImage = forwardRef((props, ref) => (
-  <StyledCardImage ref={ref} {...props} />
+const CardImage = forwardRef(({ className }, ref) => (
+  <StyledCardImage ref={ref} className={className} />
 ));
+
+CardImage.defaultProps = {
+  className: ""
+};
+
+CardImage.propTypes = {
+  className: PropTypes.string
+};
 
 export default CardImage;

@@ -1,29 +1,35 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Message from "./Message";
 
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasError: false,
+      error: null
     };
   }
 
   static getDerivedStateFromError(error) {
-    return { hasError: true };
+    return { error };
   }
 
   render() {
-    const { hasError } = this.state;
-    return hasError ? (
+    const { error } = this.state;
+    const { children } = this.props;
+    return error ? (
       <Message
         message="Algo salío mal. Por favor, intenta nuevamente."
         type="system-error"
       />
     ) : (
-      <>{this.props.children}</>
+      <>{children}</>
     );
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default ErrorBoundary;

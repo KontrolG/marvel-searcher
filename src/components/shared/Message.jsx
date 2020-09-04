@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Icon from "./Icon";
 
@@ -15,9 +16,18 @@ const StyledMessage = styled.div`
 
 const Message = ({ message, type }) => (
   <StyledMessage>
-    {type && <Icon name={type} size="4rem" />}
+    {type ? <Icon name={type} size="4rem" /> : null}
     <p>{message}</p>
   </StyledMessage>
 );
+
+Message.defaultProps = {
+  type: null
+};
+
+Message.propTypes = {
+  message: PropTypes.node.isRequired,
+  type: PropTypes.string
+};
 
 export default Message;
