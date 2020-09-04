@@ -28,7 +28,7 @@ const CharacterCard = ({ character }) => {
 const thumbnailShape = { path: PropTypes.string, ext: PropTypes.string };
 
 const characterShape = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   thumbnail: PropTypes.shape(thumbnailShape),
   name: PropTypes.string
 };

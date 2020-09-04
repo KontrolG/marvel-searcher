@@ -22,7 +22,7 @@ const CharactersResultsSection = ({ characters }) => {
 };
 
 CharactersResultsSection.propTypes = {
-  characters: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string }))
+  characters: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number }))
     .isRequired
 };
 

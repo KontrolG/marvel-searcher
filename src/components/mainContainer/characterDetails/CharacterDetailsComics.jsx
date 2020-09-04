@@ -23,7 +23,7 @@ const CharacterDetailsComics = ({ comics }) => {
 };
 
 const comicShape = {
-  id: PropTypes.string
+  id: PropTypes.number
 };
 
 CharacterDetailsComics.propTypes = {

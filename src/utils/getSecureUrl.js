@@ -1,6 +1,13 @@
 const unsecureProtocol = "http://";
 const secureProtocol = "https://";
 
+const isSecure = (url) => url.startsWith(secureProtocol);
+
+const hasUnsecureProtocol = (url) => url.startsWith(unsecureProtocol);
+
+const getUrlWithReplacedProtocol = (url) =>
+  url.replace(unsecureProtocol, secureProtocol);
+
 const getSecureUrl = (url) => {
   if (isSecure(url)) {
     return url;
@@ -10,11 +17,5 @@ const getSecureUrl = (url) => {
   }
   return secureProtocol + url;
 };
-
-const isSecure = (url) => url.startsWith(secureProtocol);
-
-const hasUnsecureProtocol = (url) => url.startsWith(unsecureProtocol);
-
-const getUrlWithReplacedProtocol = (url) => url.replace(unsecureProtocol, secureProtocol);
 
 export default getSecureUrl;
