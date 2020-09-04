@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import CharacterCard from "../CharacterCard";
 import Message from "../../shared/Message";
 
@@ -6,10 +7,10 @@ const toCharacterCard = (character) => (
   <CharacterCard character={character} key={character.id} />
 );
 
-const CharactersSection = ({ characters }) => {
+const CharactersResultsSection = ({ characters }) => {
   const charactersCards = characters.map(toCharacterCard);
-
   const hasCharacters = characters.length > 0;
+
   return hasCharacters ? (
     <section className="characters">{charactersCards}</section>
   ) : (
@@ -20,4 +21,9 @@ const CharactersSection = ({ characters }) => {
   );
 };
 
-export default CharactersSection;
+CharactersResultsSection.propTypes = {
+  characters: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string }))
+    .isRequired
+};
+
+export default CharactersResultsSection;

@@ -8,16 +8,19 @@ const StyledCardImage = styled.img`
   object-fit: cover;
 `;
 
-const CardImage = forwardRef(({ className }, ref) => (
-  <StyledCardImage ref={ref} className={className} />
+const CardImage = forwardRef(({ className, src, srcSet }, ref) => (
+  <StyledCardImage ref={ref} className={className} src={src} srcSet={srcSet} />
 ));
 
 CardImage.defaultProps = {
-  className: ""
+  className: "",
+  srcSet: null
 };
 
 CardImage.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  src: PropTypes.string.isRequired,
+  srcSet: PropTypes.string
 };
 
 export default CardImage;

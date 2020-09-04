@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ComicItem from "./ComicItem";
 
 const toComicListItem = (comic) => (
@@ -8,7 +9,8 @@ const toComicListItem = (comic) => (
 );
 
 const CharacterDetailsComics = ({ comics }) => {
-  const comicsListItems = comics.length > 0 ? comics.map(toComicListItem) : null;
+  const comicsListItems =
+    comics.length > 0 ? comics.map(toComicListItem) : null;
 
   return comicsListItems ? (
     <section>
@@ -18,6 +20,14 @@ const CharacterDetailsComics = ({ comics }) => {
   ) : (
     <p>No hay comics disponibles de este personaje.</p>
   );
+};
+
+const comicShape = {
+  id: PropTypes.string
+};
+
+CharacterDetailsComics.propTypes = {
+  comics: PropTypes.arrayOf(PropTypes.shape(comicShape)).isRequired
 };
 
 export default CharacterDetailsComics;

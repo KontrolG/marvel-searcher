@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledCharacterCardBottom = styled.div`
@@ -22,5 +23,13 @@ const CharacterCardBottom = ({ name }) => (
     <p>{name}</p>
   </StyledCharacterCardBottom>
 );
+
+CharacterCardBottom.defaultProps = {
+  name: null
+};
+
+CharacterCardBottom.propTypes = {
+  name: PropTypes.string
+};
 
 export default CharacterCardBottom;

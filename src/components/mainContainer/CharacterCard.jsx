@@ -1,4 +1,5 @@
-import React, { useCallback } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import Card from "../shared/Card/Card";
 import CardImage from "../shared/Card/CardImage";
@@ -22,6 +23,18 @@ const CharacterCard = ({ character }) => {
       </CardContent>
     </Card>
   );
+};
+
+const thumbnailShape = { path: PropTypes.string, ext: PropTypes.string };
+
+const characterShape = {
+  id: PropTypes.string,
+  thumbnail: PropTypes.shape(thumbnailShape),
+  name: PropTypes.string
+};
+
+CharacterCard.propTypes = {
+  character: PropTypes.shape(characterShape).isRequired
 };
 
 export default CharacterCard;
