@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../shared/Logo";
 import SearchForm from "./SearchForm";
 import ToggleFavoriteButton from "../shared/ToggleFavoriteButton";
@@ -9,7 +10,9 @@ const TopBar = (props) => {
 
   return (
     <header className={`top-bar ${searchIsOpen ? "search-open" : ""}`}>
-      <Logo className={`top-bar__logo ${searchIsOpen ? "hidden" : ""}`} />
+      <Link to="/" className={`top-bar__link ${searchIsOpen ? "hidden" : ""}`}>
+        <Logo className="top-bar__logo" />
+      </Link>
       <SearchForm
         toggleSearchIsOpen={toggleSearchIsOpen}
         searchIsOpen={searchIsOpen}
