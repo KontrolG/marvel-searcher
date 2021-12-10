@@ -1,7 +1,13 @@
-import React, { createRef, useEffect, useCallback } from "react";
+import React, {
+  createRef,
+  useEffect,
+  useCallback,
+  useMemo,
+  useState
+} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import useInput from "../../hooks/useInput";
+import debounce from "lodash.debounce";
 import Button from "../shared/Button";
 import { useCharactersSearchContext } from "../../contexts/CharactersSearchContext";
 import useRedirectTo from "../../hooks/useRedirectTo";
@@ -19,9 +25,7 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
     setCharacterNameQuery
   } = useCharactersSearchContext();
   const [getSearchParams, changeSearchParams] = useSearchParams();
-  const [inputValue, changeInputValue, setInputValue] = useInput(
-    characterNameQuery
-  );
+  const [inputValue, setInputValue] = useState(characterNameQuery);
   const redirectTo = useRedirectTo();
   const inputRef = createRef();
 
@@ -39,17 +43,29 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
     redirectTo(charactersResultsRoute);
   };
 
-  const changeCharacterNameQuery = useCallback(
-    (event) => {
-      event.preventDefault();
-      setCharacterNameQuery(inputValue);
-      redirectToCharactersResults();
-      changeSearchParams({
-        character: inputValue
-      });
-    },
-    [inputValue]
+  const changeCharacterNameQuery = useCallback((newCharacterNameQuery) => {
+    setCharacterNameQuery(newCharacterNameQuery);
+    redirectToCharactersResults();
+    changeSearchParams({
+      character: newCharacterNameQuery
+    });
+  }, []);
+
+  const debouncedChangeCharacterNameQuery = useMemo(
+    () => debounce(changeCharacterNameQuery, 500),
+    [changeCharacterNameQuery]
   );
+
+  function submitForm(event) {
+    event.preventDefault();
+    changeCharacterNameQuery(inputValue);
+  }
+
+  function changeInputValue(event) {
+    const newInputValue = event.target.value;
+    setInputValue(newInputValue);
+    debouncedChangeCharacterNameQuery(newInputValue);
+  }
 
   const focusInput = () => {
     if (searchIsOpen) {
@@ -77,7 +93,7 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
   }, [searchIsOpen, inputValue, characterNameQuery]);
 
   return (
-    <form className="top-bar__search" onSubmit={changeCharacterNameQuery}>
+    <form className="top-bar__search" onSubmit={submitForm}>
       <Button
         type="button"
         className="top-bar__search__button"
