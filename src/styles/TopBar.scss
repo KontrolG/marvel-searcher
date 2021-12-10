@@ -36,15 +36,14 @@ $grey: #adadad;
     }
 
     &__input {
+      color: #444;
       border: none;
-      color: inherit;
       font: inherit;
       flex: 1;
-      color: $grey;
     }
 
     &__input::placeholder {
-      color: inherit;
+      color: $grey;
     }
   }
 
