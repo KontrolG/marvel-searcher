@@ -36,6 +36,8 @@ const requestToCharactersEndpoint = (params = {}, endpoint = "") => {
 
 const getCharacters = () => requestToCharactersEndpoint();
 const getCharacterByName = (name) => requestToCharactersEndpoint({ name });
+const getCharacterByNameStartsWith = (nameStartsWith) =>
+  requestToCharactersEndpoint({ nameStartsWith });
 
 const getCharacterFromData = ([character]) => character;
 const getCharacterById = (characterId) =>
@@ -49,6 +51,7 @@ const getCharacterComics = (characterId) =>
 const MarvelAPI = {
   getCharacters,
   getCharacterByName,
+  getCharacterByNameStartsWith,
   getCharacterById,
   getCharacterComics
 };
