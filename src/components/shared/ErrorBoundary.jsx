@@ -17,11 +17,13 @@ class ErrorBoundary extends Component {
   render() {
     const { error } = this.state;
     const { children } = this.props;
+    const errorMessage =
+      process.env.NODE_ENV === "production" || !error
+        ? "Algo salio mal. Por favor, intenta nuevamente."
+        : error.toString();
+
     return error ? (
-      <Message
-        message="Algo salío mal. Por favor, intenta nuevamente."
-        type="system-error"
-      />
+      <Message message={errorMessage} type="system-error" />
     ) : (
       <>{children}</>
     );
