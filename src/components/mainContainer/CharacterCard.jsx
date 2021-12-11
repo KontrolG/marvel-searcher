@@ -18,7 +18,7 @@ const CharacterCard = ({ character }) => {
         <CardImage src={thumbnailsSrc} />
       </NavLink>
       <CardContent className="character-card__content" component="figcaption">
-        <CharacterCardTop />
+        <CharacterCardTop character={{ id, thumbnail, name }} />
         <CharacterCardBottom name={name} />
       </CardContent>
     </Card>

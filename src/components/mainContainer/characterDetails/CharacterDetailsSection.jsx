@@ -30,7 +30,7 @@ const CharacterDetailsSection = ({ character }) => {
         <Card>
           <CardImage src={thumbnailsSrc} />
           <CardContent>
-            <CharacterCardTop />
+            <CharacterCardTop character={character} />
           </CardContent>
         </Card>
       </section>
