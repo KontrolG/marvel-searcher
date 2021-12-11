@@ -1,9 +1,14 @@
+import getSecureUrl from "./getSecureUrl";
+
 const getThumbnailUrl = ({ path, extension }, type) => {
+  let thumbnailPath;
   if (type === "full") {
-    return `${path}.${extension}`;
+    thumbnailPath = `${path}.${extension}`;
   }
 
-  return `${path}/${type}.${extension}`;
+  thumbnailPath = `${path}/${type}.${extension}`;
+
+  return getSecureUrl(thumbnailPath);
 };
 
 export default getThumbnailUrl;

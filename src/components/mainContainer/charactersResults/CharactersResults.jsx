@@ -7,10 +7,12 @@ import ConnectionErrorMessage from "../../shared/ConnectionErrorMessage";
 const CharactersResults = () => {
   const [isLoading, results, error] = useGetCharactersResults();
 
+  if (error) {
+    return <ConnectionErrorMessage />;
+  }
+
   return isLoading ? (
     <LoadingSpinner />
-  ) : error ? (
-    <ConnectionErrorMessage />
   ) : (
     <CharactersResultsSection characters={results} />
   );

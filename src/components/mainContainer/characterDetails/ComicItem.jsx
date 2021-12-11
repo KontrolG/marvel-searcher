@@ -1,13 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Card from "../../shared/Card/Card";
 import CardImage from "../../shared/Card/CardImage";
 import CardContent from "../../shared/Card/CardContent";
-import CharacterCardTop from "../CharacterCardTop";
 import getThumbnailUrl from "../../../utils/getThumbnailUrl";
 import getSanitizedDescription from "../../../utils/getSanitizedDescription";
-
-const isComicDetailLink = (link) => link.type === "detail";
+import getSecureUrl from "../../../utils/getSecureUrl";
+import ComicItemCardTop from "../ComicItemCardTop";
 
 const StyledAnchor = styled.a`
   display: flex;
@@ -40,10 +40,10 @@ const StyledAnchor = styled.a`
   }
 `;
 
+const isComicDetailLink = (link) => link.type === "detail";
+
 const ComicItem = ({ comic }) => {
-  const {
-    title, description, thumbnail, urls,
-  } = comic;
+  const { title, description, thumbnail, urls } = comic;
   const comicDetailLink = urls.find(isComicDetailLink);
   const comicDetailUrl = comicDetailLink
     ? comicDetailLink.url
@@ -51,7 +51,7 @@ const ComicItem = ({ comic }) => {
 
   return (
     <StyledAnchor
-      href={comicDetailUrl}
+      href={getSecureUrl(comicDetailUrl)}
       title={`Ver más detalles sobre ${title}`}
       target="_blank"
       rel="noreferrer"
@@ -60,7 +60,7 @@ const ComicItem = ({ comic }) => {
         <Card>
           <CardImage src={getThumbnailUrl(thumbnail, "portrait_medium")} />
           <CardContent>
-            <CharacterCardTop />
+            <ComicItemCardTop />
           </CardContent>
         </Card>
       </div>
@@ -70,6 +70,27 @@ const ComicItem = ({ comic }) => {
       </div>
     </StyledAnchor>
   );
+};
+
+const thumbnailShape = {
+  path: PropTypes.string,
+  extension: PropTypes.string
+};
+
+const urlShape = {
+  type: PropTypes.string,
+  url: PropTypes.string
+};
+
+const comicShape = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  thumbnail: PropTypes.shape(thumbnailShape),
+  urls: PropTypes.arrayOf(PropTypes.shape(urlShape))
+};
+
+ComicItem.propTypes = {
+  comic: PropTypes.shape(comicShape).isRequired
 };
 
 export default ComicItem;

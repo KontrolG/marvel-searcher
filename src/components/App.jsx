@@ -5,13 +5,16 @@ import MainContainer from "./mainContainer/MainContainer";
 import { CharactersSearchProvider } from "../contexts/CharactersSearchContext";
 import "../styles/App.scss";
 import Footer from "./footer/Footer";
+import { FavoritesCharactersProvider } from "../contexts/FavoritesCharactersContext";
 
 const App = () => (
   <StrictMode>
     <CharactersSearchProvider>
       <Router>
         <TopBar />
-        <MainContainer />
+        <FavoritesCharactersProvider>
+          <MainContainer />
+        </FavoritesCharactersProvider>
       </Router>
     </CharactersSearchProvider>
     <Footer />

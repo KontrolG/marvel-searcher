@@ -14,12 +14,8 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\"",
     "format": "prettier \"src/**/*.{js,jsx}\"",
     "format:fix": "prettier --check --write \"src/**/*.{js,jsx}\"",
+    "test": "jest",
     "pre:commit": "npm run lint:fix && npm run format:fix"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'pre-commit script goes here'"
-    }
   },
   "keywords": [],
   "author": "",
@@ -29,19 +25,25 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.2",
     "dotenv": "^8.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
     "eslint": "^7.7.0",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "husky": "^4.2.5",
+    "jest": "^26.4.2",
     "mini-css-extract-plugin": "^0.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "prettier": "^2.1.1",
@@ -54,8 +56,9 @@
     "webpack-merge": "^5.1.2"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.24.0",
     "express": "^4.17.1",
+    "lodash.debounce": "^4.0.8",
     "md5": "^2.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

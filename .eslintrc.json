@@ -4,8 +4,10 @@
     "node": true
   },
   "ignorePatterns": ["node_modules/"],
-  "extends": ["airbnb"],
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
   "rules": {
+    "no-use-before-define": ["warn", "nofunc"],
     "react/jsx-filename-extension": "warn",
     "quotes": "off",
     "no-console": "warn",
@@ -36,7 +38,7 @@
     "no-unused-vars": [
       "error",
       {
-        "argsIgnorePattern": "request|response|next|value|props"
+        "argsIgnorePattern": "props"
       }
     ]
   }

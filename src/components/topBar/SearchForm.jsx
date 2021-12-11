@@ -1,9 +1,17 @@
-import React, { createRef, useEffect, useCallback } from "react";
+import React, {
+  createRef,
+  useEffect,
+  useCallback,
+  useMemo,
+  useState
+} from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import useInput from "../../hooks/useInput";
+import debounce from "lodash.debounce";
 import Button from "../shared/Button";
 import { useCharactersSearchContext } from "../../contexts/CharactersSearchContext";
 import useRedirectTo from "../../hooks/useRedirectTo";
+import useSearchParams from "../../hooks/useSearchParams";
 
 const StyledInput = styled.input`
   border: none;
@@ -14,25 +22,50 @@ const StyledInput = styled.input`
 const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
   const {
     characterNameQuery,
-    setCharacterNameQuery,
+    setCharacterNameQuery
   } = useCharactersSearchContext();
-  const [inputValue, changeInputValue] = useInput(characterNameQuery);
+  const [getSearchParams, changeSearchParams] = useSearchParams();
+  const [inputValue, setInputValue] = useState(characterNameQuery);
   const redirectTo = useRedirectTo();
   const inputRef = createRef();
+
+  useEffect(() => {
+    const characterSearchQuery = getSearchParams().character || "";
+    setCharacterNameQuery(characterSearchQuery);
+  }, []);
+
+  useEffect(() => {
+    setInputValue(characterNameQuery);
+  }, [characterNameQuery]);
 
   const redirectToCharactersResults = () => {
     const charactersResultsRoute = "/";
     redirectTo(charactersResultsRoute);
   };
 
-  const changeCharacterNameQuery = useCallback(
-    (event) => {
-      event.preventDefault();
-      setCharacterNameQuery(inputValue);
-      redirectToCharactersResults();
-    },
-    [inputValue],
+  const changeCharacterNameQuery = useCallback((newCharacterNameQuery) => {
+    setCharacterNameQuery(newCharacterNameQuery);
+    redirectToCharactersResults();
+    changeSearchParams({
+      character: newCharacterNameQuery
+    });
+  }, []);
+
+  const debouncedChangeCharacterNameQuery = useMemo(
+    () => debounce(changeCharacterNameQuery, 500),
+    [changeCharacterNameQuery]
   );
+
+  function submitForm(event) {
+    event.preventDefault();
+    changeCharacterNameQuery(inputValue);
+  }
+
+  function changeInputValue(event) {
+    const newInputValue = event.target.value;
+    setInputValue(newInputValue);
+    debouncedChangeCharacterNameQuery(newInputValue);
+  }
 
   const focusInput = () => {
     if (searchIsOpen) {
@@ -52,14 +85,15 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
   useEffect(forceSearchIsOpen, [characterNameQuery]);
 
   const closeSearch = useCallback(() => {
-    const shouldToggleSearchIsOpen = searchIsOpen && inputValue === "" && characterNameQuery === "";
+    const shouldToggleSearchIsOpen =
+      searchIsOpen && inputValue === "" && characterNameQuery === "";
     if (shouldToggleSearchIsOpen) {
       toggleSearchIsOpen();
     }
   }, [searchIsOpen, inputValue, characterNameQuery]);
 
   return (
-    <form className="top-bar__search" onSubmit={changeCharacterNameQuery}>
+    <form className="top-bar__search" onSubmit={submitForm}>
       <Button
         type="button"
         className="top-bar__search__button"
@@ -80,6 +114,15 @@ const SearchForm = ({ searchIsOpen, toggleSearchIsOpen }) => {
       />
     </form>
   );
+};
+
+SearchForm.defaultProps = {
+  searchIsOpen: false
+};
+
+SearchForm.propTypes = {
+  searchIsOpen: PropTypes.bool,
+  toggleSearchIsOpen: PropTypes.func.isRequired
 };
 
 export default SearchForm;

@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledCardContent = styled.div`
@@ -8,10 +9,10 @@ const StyledCardContent = styled.div`
   top: 0;
 `;
 
-const CardContent = forwardRef(({ component, children, ...props }, ref) => {
+const CardContent = forwardRef(({ component, children, className }, ref) => {
   StyledCardContent.target = component;
   return (
-    <StyledCardContent ref={ref} {...props}>
+    <StyledCardContent ref={ref} className={className}>
       {children}
     </StyledCardContent>
   );
@@ -19,6 +20,14 @@ const CardContent = forwardRef(({ component, children, ...props }, ref) => {
 
 CardContent.defaultProps = {
   component: "div",
+  className: "",
+  children: null
+};
+
+CardContent.propTypes = {
+  component: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default CardContent;

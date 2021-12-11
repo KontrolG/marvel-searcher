@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import CharacterNotFoundMessage from "./CharacterNotFoundMessage";
 import Icon from "../../shared/Icon";
@@ -10,9 +11,7 @@ import getThumbnailUrl from "../../../utils/getThumbnailUrl";
 import CharacterDetailsComics from "./CharacterDetailsComics";
 
 const CharacterDetailsSection = ({ character }) => {
-  const {
-    thumbnail, name, description, comics,
-  } = character;
+  const { thumbnail, name, description, comics } = character;
   const hasValidCharacter = name !== "";
   if (!hasValidCharacter) {
     return <CharacterNotFoundMessage />;
@@ -31,7 +30,7 @@ const CharacterDetailsSection = ({ character }) => {
         <Card>
           <CardImage src={thumbnailsSrc} />
           <CardContent>
-            <CharacterCardTop />
+            <CharacterCardTop character={character} />
           </CardContent>
         </Card>
       </section>
@@ -44,6 +43,17 @@ const CharacterDetailsSection = ({ character }) => {
       </div>
     </>
   );
+};
+
+const characterShape = {
+  thumbnail: PropTypes.object,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  comics: PropTypes.array
+};
+
+CharacterDetailsSection.propTypes = {
+  character: PropTypes.shape(characterShape).isRequired
 };
 
 export default CharacterDetailsSection;

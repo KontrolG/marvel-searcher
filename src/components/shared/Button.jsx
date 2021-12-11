@@ -20,23 +20,38 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-const Button = forwardRef((props, ref) => {
-  const {
-    className, onClick, icon, children, type,
-  } = props;
-  return (
-    <StyledButton type={type} ref={ref} className={className} onClick={onClick}>
-      {icon && <Icon name={icon.name} size={icon.size} />}
-      {children}
-    </StyledButton>
-  );
-});
+const Button = forwardRef(
+  ({ className, onClick, icon, children, type }, ref) => {
+    return (
+      <StyledButton
+        type={type}
+        ref={ref}
+        className={className}
+        onClick={onClick}
+      >
+        {icon && <Icon name={icon.name} size={icon.size} />}
+        {children}
+      </StyledButton>
+    );
+  }
+);
+
+Button.defaultProps = {
+  children: null,
+  icon: null,
+  type: "button",
+  className: "",
+  onClick: () => {}
+};
 
 Button.propTypes = {
   icon: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    size: PropTypes.string,
+    size: PropTypes.string
   }),
-  children: PropTypes.element,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  type: PropTypes.string,
+  onClick: PropTypes.func
 };
 export default Button;

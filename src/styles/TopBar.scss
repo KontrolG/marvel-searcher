@@ -14,8 +14,12 @@ $grey: #adadad;
   width: 100%;
   z-index: 9999;
 
-  &__logo {
+  &__link {
+    line-height: 0;
     margin-right: 1.5rem;
+  }
+
+  &__logo {
     transition: all 0.2s ease;
   }
 
@@ -36,15 +40,14 @@ $grey: #adadad;
     }
 
     &__input {
+      color: #444;
       border: none;
-      color: inherit;
       font: inherit;
       flex: 1;
-      color: $grey;
     }
 
     &__input::placeholder {
-      color: inherit;
+      color: $grey;
     }
   }
 

@@ -1,12 +1,13 @@
 import Axios from "axios";
 import md5 from "md5";
 
-const baseEndpoint = "https://gateway.marvel.com/v1/public";
+const baseEndpoint = process.env.REACT_APP_MARVEL_API_BASE_URL;
 const charactersEndpoint = `${baseEndpoint}/characters`;
 
+const privateKey = process.env.REACT_APP_MARVEL_API_PRIVATE_KEY;
+const publicKey = process.env.REACT_APP_MARVEL_API_PUBLIC_KEY;
+
 const getAuthenticationParameters = () => {
-  const privateKey = process.env.REACT_APP_MARVEL_API_PRIVATE_KEY;
-  const publicKey = process.env.REACT_APP_MARVEL_API_PUBLIC_KEY;
   const timestamp = Date.now();
   const hash = md5(timestamp + privateKey + publicKey);
   return { ts: timestamp, apikey: publicKey, hash };
@@ -26,8 +27,8 @@ const requestToCharactersEndpoint = (params = {}, endpoint = "") => {
   const parameters = {
     params: {
       ...authenticationParams,
-      ...params,
-    },
+      ...params
+    }
   };
 
   return Axios.get(url, parameters).then(getResponseData);
@@ -35,19 +36,24 @@ const requestToCharactersEndpoint = (params = {}, endpoint = "") => {
 
 const getCharacters = () => requestToCharactersEndpoint();
 const getCharacterByName = (name) => requestToCharactersEndpoint({ name });
+const getCharacterByNameStartsWith = (nameStartsWith) =>
+  requestToCharactersEndpoint({ nameStartsWith });
 
 const getCharacterFromData = ([character]) => character;
-const getCharacterById = (characterId) => requestToCharactersEndpoint(null, `/${characterId}`).then(
-  getCharacterFromData,
-);
+const getCharacterById = (characterId) =>
+  requestToCharactersEndpoint(null, `/${characterId}`).then(
+    getCharacterFromData
+  );
 
-const getCharacterComics = (characterId) => requestToCharactersEndpoint(null, `/${characterId}/comics`);
+const getCharacterComics = (characterId) =>
+  requestToCharactersEndpoint(null, `/${characterId}/comics`);
 
 const MarvelAPI = {
   getCharacters,
   getCharacterByName,
+  getCharacterByNameStartsWith,
   getCharacterById,
-  getCharacterComics,
+  getCharacterComics
 };
 
 export default MarvelAPI;

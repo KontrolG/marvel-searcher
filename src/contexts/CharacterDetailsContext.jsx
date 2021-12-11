@@ -8,10 +8,10 @@ const defaultState = {
     comics: [],
     thumbnail: {
       path: null,
-      ext: null,
-    },
+      ext: null
+    }
   },
-  setCharacter: () => {},
+  setCharacter: () => {}
 };
 
 const CharacterDetailsContext = createContext(defaultState);
@@ -19,8 +19,8 @@ const CharacterDetailsContext = createContext(defaultState);
 const CharacterDetailsProvider = ({ children }) => {
   const [character, setCharacterValue] = useState(defaultState.character);
 
-  const setCharacter = (character) => {
-    const characterValue = character || defaultState.character;
+  const setCharacter = (newCharacter) => {
+    const characterValue = newCharacter || defaultState.character;
     setCharacterValue(characterValue);
   };
 
@@ -36,9 +36,17 @@ const CharacterDetailsProvider = ({ children }) => {
 export default CharacterDetailsContext;
 
 CharacterDetailsProvider.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired
 };
 
-export const useCharacterDetailsContext = () => useContext(CharacterDetailsContext);
+export const useCharacterDetailsContext = () => {
+  const context = useContext(CharacterDetailsContext);
+  if (!context) {
+    throw new Error(
+      "useCharacterDetailsContext must be used within a CharacterDetailsProvider"
+    );
+  }
+  return context;
+};
 
 export { CharacterDetailsProvider };
