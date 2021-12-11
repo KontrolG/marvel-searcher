@@ -1,12 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link , useRouteMatch } from "react-router-dom";
 import Logo from "../shared/Logo";
 import SearchForm from "./SearchForm";
 import ToggleFavoriteButton from "../shared/ToggleFavoriteButton";
 import useToggle from "../../hooks/useToggle";
+import { FAVORITES_CHARACTERS_PATH } from "../../constants/paths";
+
 
 const TopBar = (props) => {
   const [searchIsOpen, toggleSearchIsOpen] = useToggle(false);
+  const favoriteButtonIsActive = useRouteMatch(FAVORITES_CHARACTERS_PATH);
 
   return (
     <header className={`top-bar ${searchIsOpen ? "search-open" : ""}`}>
@@ -17,10 +20,13 @@ const TopBar = (props) => {
         toggleSearchIsOpen={toggleSearchIsOpen}
         searchIsOpen={searchIsOpen}
       />
-      <ToggleFavoriteButton
-        className="top-bar__toggle-favorites"
-        title="Sólo mostrar personajes favoritos"
-      />
+      <Link to={FAVORITES_CHARACTERS_PATH}>
+        <ToggleFavoriteButton
+          isFavorite={favoriteButtonIsActive}
+          className="top-bar__toggle-favorites"
+          title="Sólo mostrar personajes favoritos"
+        />
+      </Link>
     </header>
   );
 };
