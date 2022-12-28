@@ -20,10 +20,10 @@ Instala las dependencias:
 
 Crea un archivo con el nombre “.env” en el directorio raíz y añade tus llaves de la [API de Marvel](https://developer.marvel.com/account) de la siguiente manera:
 
-    REACT_APP_MARVEL_API_BASE_URL=https://gateway.marvel.com/v1/public
+    VITE_MARVEL_API_BASE_URL=https://gateway.marvel.com/v1/public
 
-    REACT_APP_MARVEL_API_PUBLIC_KEY=%TU_LLAVE_PÚBLICA%
-    REACT_APP_MARVEL_API_PRIVATE_KEY=%TU_LLAVE_PRIVADA%
+    VITE_MARVEL_API_PUBLIC_KEY=%TU_LLAVE_PÚBLICA%
+    VITE_MARVEL_API_PRIVATE_KEY=%TU_LLAVE_PRIVADA%
 
 Ahora puedes correr la aplicación ejecutando:
 

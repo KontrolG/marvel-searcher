@@ -18,7 +18,7 @@ class ErrorBoundary extends Component {
     const { error } = this.state;
     const { children } = this.props;
     const errorMessage =
-      process.env.NODE_ENV === "production" || !error
+      import.meta.env.MODE === "production" || !error
         ? "Algo salio mal. Por favor, intenta nuevamente."
         : error.toString();
 

@@ -1,11 +1,11 @@
 import Axios from "axios";
 import md5 from "md5";
 
-const baseEndpoint = process.env.REACT_APP_MARVEL_API_BASE_URL;
+const baseEndpoint = import.meta.env.VITE_MARVEL_API_BASE_URL;
 const charactersEndpoint = `${baseEndpoint}/characters`;
 
-const privateKey = process.env.REACT_APP_MARVEL_API_PRIVATE_KEY;
-const publicKey = process.env.REACT_APP_MARVEL_API_PUBLIC_KEY;
+const privateKey = import.meta.env.VITE_MARVEL_API_PRIVATE_KEY;
+const publicKey = import.meta.env.VITE_MARVEL_API_PUBLIC_KEY;
 
 const getAuthenticationParameters = () => {
   const timestamp = Date.now();
