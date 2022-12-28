@@ -3,7 +3,7 @@
 Buscador de personajes de Marvel realizado en ReactJS, utilizando Styled-components, Context API y Hooks junto a Sass.
 
 [Demostración en vivo
-](https://marvel-searcher-reactjs.herokuapp.com/)
+](https://marvel-searcher-reactjs.vercel.app/)
 
 ## Instalación
 
